@@ -6,26 +6,27 @@
 
 RGBLed :: RGBLed()
 {
-    redpin = 10;
-    greenpin = 9;
-    bluepin = 8;
+    redPin = 10;
+    greenPin = 9;
+    bluePin = 8;
 
 }
+
 /**
  * RGBLed
  * Overrided constructor, init set com PIN with param
- * @param _redpin
- * @param _greenpin
- * @param _bluepin
+ * @param _redPin
+ * @param _greenPin
+ * @param _bluePin
  */
-RGBLed :: RGBLed(int _redpin,int _greenpin,int _bluepin)
+
+RGBLed :: RGBLed(int _redPin,int _greenPin,int _bluePin)
 {
-    redpin = _redpin;
-    greenpin = _greenpin;
-    bluepin = _bluepin;
-
-
+    redPin = _redPin;
+    greenPin = _greenPin;
+    bluePin = _bluePin;
 }
+
 /**
  * lightOn
  * set color value green, blue, red
@@ -35,19 +36,20 @@ RGBLed :: RGBLed(int _redpin,int _greenpin,int _bluepin)
  */
 void RGBLed :: lightOn(int red,int green,int blue)
 {
-    analogWrite(redpin, red);
-    analogWrite(greenpin, green);
-    analogWrite(bluepin, blue);
+    analogWrite(redPin, red);
+    analogWrite(greenPin, green);
+    analogWrite(bluePin, blue);
 }
+
 /**
  * lightOff
  * switchOff RGB Led
  */
 void RGBLed :: lightOff()
 {
-    analogWrite(redpin, 0);
-    analogWrite(greenpin, 0);
-    analogWrite(bluepin, 0);
+    analogWrite(redPin, 0);
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, 0);
 }
 
 
