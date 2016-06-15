@@ -1,7 +1,8 @@
 #include "DHTSensor.h"
 DHTSensor DHT;
 
-void setup() {
+void setup() 
+{
    Serial.begin(9600);
 }
 
