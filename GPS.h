@@ -11,18 +11,23 @@
 class GPS
 {
 	public:
-		GPS(double* position);
+		GPS(double[][3]& position, String[]& datetime);
 
 		bool read();
 
 	private:
 		void init();
+		void push(double[3] position, String datetime);
+		bool check();
+
 
 
 		TinyGPSPlus tinyGps;
 		SoftwareSerial ss(RX, TX);
 
-		double* Position;
+		double[][3] Position;
+		String[] Datetime;
+		
 }
 
 #endif // !GPS_H
