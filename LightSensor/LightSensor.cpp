@@ -2,7 +2,6 @@
 
 /**
 * Default constructor
-* @return {void}
 */
 LightSensor::LightSensor()
 {
@@ -12,7 +11,6 @@ LightSensor::LightSensor()
 /**
 * Overrided constructor
 * @param  {int} pin number
-* @return {void}
 */
 LightSensor::LightSensor(int pin)
 {

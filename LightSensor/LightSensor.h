@@ -16,14 +16,12 @@ class LightSensor
 	public :
 		/**
 		* Default constructor
-		* @return {void}
 		*/
 		LightSensor();
 		
 		/**
 		* Overrided constructor
 		* @param  {int} pin number
-		* @return {void}
 		*/
 		LightSensor(int pin);
 		
