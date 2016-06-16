@@ -8,5 +8,5 @@ void setup()
 
 void loop()
 {
-  Serial.println(Light.read());
+  Serial.println(Light.read().lightLevel);
 }
