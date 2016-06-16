@@ -4,13 +4,22 @@
 #include "Arduino.h"
 
 /**
+* Structure representing the light level
+*/
+typedef struct SLight
+{
+	int lightLevel;
+} SLight;
+
+
+/**
  * LightSensor
  * This class is used in order to manage the light sensor
  */
 class LightSensor
 {
 	private :
-		int lightLevel;
+		SLight light;
 		int lightPin;
 
 	public :
