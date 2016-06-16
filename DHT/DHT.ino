@@ -8,9 +8,8 @@ void setup()
 
 void loop()
 {
-    DHT.readDHT();
-    Serial.println(DHT.getTemperature());
-    Serial.println(DHT.getHumidity());
+    DHT.read();
+    Serial.println(DHT.getTemperature().temperature);
+    Serial.println(DHT.getHumidity().humidity);
     delay(150);
 }
-
