@@ -7,9 +7,9 @@ Accelerometer::Accelerometer()
 {
 	deltaTime = 100;
 	lastExecution = 0;
-	alpha = 0;
-	beta = 0;
-	theta = 0;
+	angularPosition.alpha = 0;
+	angularPosition.beta = 0;
+	angularPosition.theta = 0;
 }
 
 /**
@@ -20,9 +20,9 @@ Accelerometer::Accelerometer(int dt)
 {
 	deltaTime = dt;
 	lastExecution = 0;
-	alpha = 0;
-	beta = 0;
-	theta = 0;
+	angularPosition.alpha = 0;
+	angularPosition.beta = 0;
+	angularPosition.theta = 0;
 }
 
 
@@ -140,7 +140,7 @@ void Accelerometer::update()
 {
 	if (millis() - lastExecution >= deltaTime)
 	{
-		chipset.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+		chipset.getMotion6(&(linearAcceleration.ax), &(linearAcceleration.ay), &(linearAcceleration.az), &(angularAcceleration.gx), &(angularAcceleration.gy), &(linearAcceleration.gz));
 	}
 }
 
@@ -152,9 +152,9 @@ void Accelerometer::update()
  */
 void Accelerometer::getLinearAccelerationG(double* result)
 {
-	result[0] = (double) (ax) / LSB_TO_G_2;
-	result[1] = (double) (ay) / LSB_TO_G_2;
-	result[2] = (double) (az) / LSB_TO_G_2;
+	result[0] = (double) (linearAcceleration.ax) / LSB_TO_G_2;
+	result[1] = (double) (linearAcceleration.ay) / LSB_TO_G_2;
+	result[2] = (double) (linearAcceleration.az) / LSB_TO_G_2;
 }
 
 /**
@@ -210,9 +210,9 @@ void Accelerometer::getLinearAccelerationMPSWithoutGravity(double* result)
  */
 void Accelerometer::getAngularAccelerationDPS(double* result)
 {
-	result[0] = (double) (gx) / LSB_TO_DPS_250;
-	result[1] = (double) (gy) / LSB_TO_DPS_250;
-	result[2] = (double) (gz) / LSB_TO_DPS_250;
+	result[0] = (double) (angularAcceleration.gx) / LSB_TO_DPS_250;
+	result[1] = (double) (angularAcceleration.gy) / LSB_TO_DPS_250;
+	result[2] = (double) (angularAcceleration.gz) / LSB_TO_DPS_250;
 }
 
 /**
@@ -246,9 +246,9 @@ void Accelerometer::getAngularPositionD(double* result)
 	beta 	+= (double) (acceleration[1] * deltaTime / 1000);
 	theta 	+= (double) (acceleration[2] * deltaTime / 1000);
 
-	result[0] = alpha;
-	result[1] = beta;
-	result[2] = theta;
+	result[0] = angularPosition.alpha;
+	result[1] = angularPosition.beta;
+	result[2] = angularPosition.theta;
 }
 
 /**
@@ -261,9 +261,9 @@ void Accelerometer::getAngularPositionR(double* result)
 {
 	getAngularPositionD(result);
 
-	result[0] = (double) (alpha * PI / 180);
-	result[1] = (double) (beta * PI / 180);
-	result[2] = (double) (theta * PI / 180);
+	result[0] = (double) (angularPosition.alpha * PI / 180);
+	result[1] = (double) (angularPosition.beta * PI / 180);
+	result[2] = (double) (angularPosition.theta * PI / 180);
 
 }
 
