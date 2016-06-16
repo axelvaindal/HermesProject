@@ -8,6 +8,18 @@
 #define RX 6
 #define TX 5
 
+
+typedef struct SCoordinate
+{
+    double longitude;
+    double latitude;
+} Scoordinate;
+
+typedef struct SDatetime
+{
+    String Datetime;
+} SDatetime;
+
 /**
  * GPS Class
  * This module is used in order to manage an Ublox NEO-6M sensor with arduino
@@ -29,8 +41,9 @@ class GPS
 		/**
 		 * Private Methods
 		 */
+
 		void init();
-		void push(double position[2], String datetime);
+        void push(SCoordinate coordinate, SDatetime datetime);
 		bool check();
 
 		/**
@@ -38,9 +51,9 @@ class GPS
 		 */
 		TinyGPSPlus tinyGps;
 		SoftwareSerial ss;
+        SCoordinate coordinate;
+        SDatetime datetime;
 
-		double Position[10][2];
-		String Datetime[10];
 		
 };
 
