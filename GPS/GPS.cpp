@@ -6,8 +6,6 @@
 GPS::GPS() : ss(RX, TX)
 {
 	init();
-	
-	
 }
 
 
@@ -20,19 +18,18 @@ bool GPS::read()
 {
 	if(check())
 	{
-		double position[2];
+
 		if (tinyGps.location.isValid())
 		{
-			position[0] = tinyGps.location.lat();
-			position[1] = tinyGps.location.lng();
+            coordinate.latitude = tinyGps.location.lat();
+            coordinate.longitude = tinyGps.location.lng();
 		}
 		else
 		{
-			position[0] = 0.0;
-			position[1] = 0.0;
+            coordinate.latitude = 0.0;
+            coordinate.longitude = 0.0;
 		}
 
-		String datetime;
 		if (tinyGps.date.isValid() && tinyGps.time.isValid())
 		{
 			datetime.concat(tinyGps.date.day());
@@ -53,7 +50,7 @@ bool GPS::read()
 			datetime = "INVALID";
 		}
 
-		push(position, datetime);
+        push(coordinate, datetime);
 		return true;
 	}
 
@@ -79,12 +76,11 @@ void GPS::init()
  * @param {String} datetime Datetime data
  * @return {void}
  */
-void GPS::push(double position[2], String datetime)
 {
 	Serial.print("latitude : ");
-	Serial.println(position[0]);
+    Serial.println(coordinate.latitude);
 	Serial.print("longitude : ");
-	Serial.println(position[1]);
+    Serial.println(coordinate.longitude);
 	Serial.print("date : ");
 	Serial.println(datetime);
 	Serial.println("");
