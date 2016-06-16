@@ -20,20 +20,20 @@ LightSensor::LightSensor(int pin)
 /**
 * read method
 * This method get the light level from the light sensor and store the value in the lighLevel variable
-* @return {int}
+* @return {SLight}
 */
-int LightSensor::read()
+SLight LightSensor::read()
 {
-	lightLevel = analogRead(lightPin);
-	return lightLevel;
+	light.lightLevel = analogRead(lightPin);
+	return light;
 }
 
 /**
 * getLightLevel method
 * This method return the light level between 0 and 1023
-* @return {int}
+* @return {SLight}
 */
-int LightSensor::getLightLevel()
+SLight LightSensor::getLightLevel()
 {
-	return lightLevel;
+	return light;
 }
