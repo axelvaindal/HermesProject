@@ -76,6 +76,7 @@ void GPS::init()
  * @param {String} datetime Datetime data
  * @return {void}
  */
+void GPS::push(SCoordinate coordinate, SDatetime datetime)
 {
 	Serial.print("latitude : ");
     Serial.println(coordinate.latitude);
