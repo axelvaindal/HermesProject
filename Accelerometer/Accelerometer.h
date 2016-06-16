@@ -93,25 +93,37 @@ class Accelerometer
 		/**
 		* Public Methods
 		*/
-		void read(double* result);
-		void update();
 		void init();
+		void update();
+		void Accelerometer::read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAngularPosition* aP);
+		
+		/**
+		 * Linear Acceleration Methods
+		 */
+		void getLinearAccelerationG(SLinearAcceleration* result);
+		void getLinearAccelerationGWithoutGravity(SLinearAcceleration* result);
+		void getLinearAccelerationMPS(SLinearAcceleration* result);
+		void getLinearAccelerationMPSWithoutGravity(SLinearAcceleration* result);
 
-		void getLinearAccelerationG(double* result);
-		void getLinearAccelerationGWithoutGravity(double* result);
-		void getLinearAccelerationMPS(double* result);
-		void getLinearAccelerationMPSWithoutGravity(double* result);
-		void getAngularAccelerationDPS(double* result);
-		void getAngularAccelerationRPS(double* result);
-		void getAngularPositionD(double* result);
-		void getAngularPositionR(double* result);		
+		/**
+		 * Angular Acceleration Methods
+		 */
+		
+		void getAngularAccelerationDPS(SAngularAcceleration* result);
+		void getAngularAccelerationRPS(SAngularAcceleration* result);
+
+		/**
+		 * Angular Position Methods
+		 */
+		void getAngularPositionD(SAngularPosition* result);
+		void getAngularPositionR(SAngularPosition* result);
 
 	private:
 
 		/**
 		* Private Methods
 		*/
-		void removeGravityEffect(double* result);
+		void removeGravityEffect(SLinearAcceleration* result);
 
 		/**
 		* Private Attributes

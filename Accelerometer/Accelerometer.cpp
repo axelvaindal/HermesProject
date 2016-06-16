@@ -70,65 +70,29 @@ void Accelerometer::init()
 
 /**
  * Accelerometer::read
- * Initialization method in order to set sensibility and tare
- * @param {double*} result The result array where to put the data 
+ * Reading method in order to retrieve the data
+ * @param {SLinearAcceleration*} lA The result structure where to put the linear acceleration data
+ * @param {SAngularAcceleration*} aA The result structure where to put the angular acceleration data 
+ * @param {SAngularPosition*} aP The result structure where to put the angular position data  
  * @return {void}
  */
-void Accelerometer::read(double* result)
+void Accelerometer::read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAngularPosition* aP)
 {
 	update();
+	
+	/* Linear Acceleration */
+	getLinearAccelerationG(lA);
+	getLinearAccelerationGWithoutGravity(lA);
+	getLinearAccelerationMPS(lA);
+	getLinearAccelerationMPSWithoutGravity(lA);
 	 
-	double temp[3] = {1.0, 1.0, 1.0};
+	/* Angular Acceleration */
+	getAngularAccelerationDPS(aA);
+	getAngularAccelerationRPS(aA);
 	 
-	 
-	getLinearAccelerationG(temp);
-	 
-	result[0] = temp[0];
-	result[1] = temp[1];
-	result[2] = temp[2];
-	 
-	getLinearAccelerationGWithoutGravity(temp);
-	 
-	result[3] = temp[0];
-	result[4] = temp[1];
-	result[5] = temp[2];
-	 
-	getLinearAccelerationMPS(temp);
-	 
-	result[6] = temp[0];
-	result[7] = temp[1];
-	result[8] = temp[2];
-	 
-	getLinearAccelerationMPSWithoutGravity(temp);
-	 
-	result[9]  = temp[0];
-	result[10] = temp[1];
-	result[11] = temp[2];
-	 
-	 
-	getAngularAccelerationDPS(temp);
-	 
-	result[12] = temp[0];
-	result[13] = temp[1];
-	result[14] = temp[2];
-	 
-	getAngularAccelerationRPS(temp);
-	 
-	result[15] = temp[0];
-	result[16] = temp[1];
-	result[17] = temp[2];
-	 
-	getAngularPositionD(temp);
-	 
-	result[18] = temp[0];
-	result[19] = temp[1];
-	result[20] = temp[2];
-	 
-	getAngularPositionR(temp);
-	 
-	result[21] = temp[0];
-	result[22] = temp[1];
-	result[23] = temp[2];
+	/* Angular Position */
+	getAngularPositionD(aP);
+	getAngularPositionR(aP);
 }
 
 /**
@@ -140,164 +104,160 @@ void Accelerometer::update()
 {
 	if (millis() - lastExecution >= deltaTime)
 	{
-		chipset.getMotion6(&(linearAcceleration.ax), &(linearAcceleration.ay), &(linearAcceleration.az), &(angularAcceleration.gx), &(angularAcceleration.gy), &(linearAcceleration.gz));
+		chipset.getMotion6(&(linearAcceleration.ax), &(linearAcceleration.ay), &(linearAcceleration.az), &(angularAcceleration.gx), &(angularAcceleration.gy), &(angularAcceleration.gz));
 	}
 }
 
 /**
  * Accelerometer::getLinearAccelerationG
  * This method returns the absolute acceleration of the sensor in g
- * @param {double*} result The result array where to put the data 
+ * @param {SLinearAcceleration*} result The result structure where to put the data 
  * @return {void}
  */
-void Accelerometer::getLinearAccelerationG(double* result)
+void Accelerometer::getLinearAccelerationG(SLinearAcceleration* result)
 {
-	result[0] = (double) (linearAcceleration.ax) / LSB_TO_G_2;
-	result[1] = (double) (linearAcceleration.ay) / LSB_TO_G_2;
-	result[2] = (double) (linearAcceleration.az) / LSB_TO_G_2;
+	result->ax = (double) (linearAcceleration.ax) / LSB_TO_G_2;
+	result->ay = (double) (linearAcceleration.ay) / LSB_TO_G_2;
+	result->az = (double) (linearAcceleration.az) / LSB_TO_G_2;
 }
 
 /**
  * Accelerometer::getLinearAccelerationGWithoutGravity
  * This method returns the absolute acceleration of the sensor in g without gravity effect
- * @param {double*} result The result array where to put the data 
+ * @param {SLinearAcceleration*} result The result structure where to put the data 
  * @return {void}
  */
-void Accelerometer::getLinearAccelerationGWithoutGravity(double* result)
+void Accelerometer::getLinearAccelerationGWithoutGravity(SLinearAcceleration* result)
 {
-	double angularPosition[3], linearAcceleration[3];
-	
 	removeGravityEffect(result);
 }
 
 /**
  * Accelerometer::getLinearAccelerationMPS
  * This method returns the absolute acceleration of the sensor in m/s²
- * @param {double*} result The result array where to put the data 
+ * @param {SLinearAcceleration*} result The result structure where to put the data 
  * @return {void}
  */
-void Accelerometer::getLinearAccelerationMPS(double* result)
+void Accelerometer::getLinearAccelerationMPS(SLinearAcceleration* result)
 {
 	getLinearAccelerationG(result);
 
-	result[0] *= GRAVITY_CONSTANT;
-	result[1] *= GRAVITY_CONSTANT;
-	result[2] *= GRAVITY_CONSTANT;
+	result->ax *= GRAVITY_CONSTANT;
+	result->ay *= GRAVITY_CONSTANT;
+	result->az *= GRAVITY_CONSTANT;
 
 }
 
 /**
  * Accelerometer::getLinearAccelerationMPSWithoutGravity
  * This method returns the absolute acceleration of the sensor in m/s² without gravity effect
- * @param {double*} result The result array where to put the data 
+ * @param {SLinearAcceleration*} result The result structure where to put the data 
  * @return {void}
  */
-void Accelerometer::getLinearAccelerationMPSWithoutGravity(double* result)
+void Accelerometer::getLinearAccelerationMPSWithoutGravity(SLinearAcceleration* result)
 {
 	getLinearAccelerationGWithoutGravity(result);
 
-	result[0] *= GRAVITY_CONSTANT;
-	result[1] *= GRAVITY_CONSTANT;
-	result[2] *= GRAVITY_CONSTANT;
-
+	result->ax *= GRAVITY_CONSTANT;
+	result->ay *= GRAVITY_CONSTANT;
+	result->az *= GRAVITY_CONSTANT;
 }
 
 /**
  * Accelerometer::getAngularAccelerationDPS
  * This method returns the absolute angular speed of the sensor in degree/s 
- * @param {double*} result The result array where to put the data
+ * @param {SAngularAcceleration*} result The result structure where to put the data 
  * @return {void} 
  */
-void Accelerometer::getAngularAccelerationDPS(double* result)
+void Accelerometer::getAngularAccelerationDPS(SAngularAcceleration* result)
 {
-	result[0] = (double) (angularAcceleration.gx) / LSB_TO_DPS_250;
-	result[1] = (double) (angularAcceleration.gy) / LSB_TO_DPS_250;
-	result[2] = (double) (angularAcceleration.gz) / LSB_TO_DPS_250;
+	result->gx = (double) (angularAcceleration.gx) / LSB_TO_DPS_250;
+	result->gy = (double) (angularAcceleration.gy) / LSB_TO_DPS_250;
+	result->gz = (double) (angularAcceleration.gz) / LSB_TO_DPS_250;
 }
 
 /**
  * Accelerometer::getAngularAccelerationRPS
  * This method returns the absolute angular speed of the sensor in rad/s
- * @param {double*} result The result array where to put the data 
+ * @param {SAngularAcceleration*} result The result structure where to put the data
  * @return {void}
  */
-void Accelerometer::getAngularAccelerationRPS(double* result)
+void Accelerometer::getAngularAccelerationRPS(SAngularAcceleration* result)
 {
 	getAngularAccelerationDPS(result);
 
-	result[0] = (double) (result[0] * PI / 180);
-	result[1] = (double) (result[1] * PI / 180);
-	result[2] = (double) (result[2] * PI / 180);
+	result->gx = (double) (result->gx * PI / 180);
+	result->gy = (double) (result->gy * PI / 180);
+	result->gz = (double) (result->gz * PI / 180);
 
 }
 
 /**
  * Accelerometer::getAngularPositionD
  * This method returns the absolute angular position of the sensor in degree
- * @param {double*} result The result array where to put the data 
+ * @param {SAngularPosition*} result The result structure where to put the data
  * @return {void}
  */
-void Accelerometer::getAngularPositionD(double* result)
+void Accelerometer::getAngularPositionD(SAngularPosition* result)
 {
-	double acceleration[3];
-	getAngularAccelerationDPS(acceleration);
+	SAngularAcceleration a;
+	getAngularAccelerationDPS(&a);
 
-	alpha 	+= (double) (acceleration[0] * deltaTime / 1000);
-	beta 	+= (double) (acceleration[1] * deltaTime / 1000);
-	theta 	+= (double) (acceleration[2] * deltaTime / 1000);
+	angularPosition.alpha 	+= (double) (a->gx * deltaTime / 1000);
+	angularPosition.beta 	+= (double) (a->gy * deltaTime / 1000);
+	angularPosition.theta 	+= (double) (a->gz * deltaTime / 1000);
 
-	result[0] = angularPosition.alpha;
-	result[1] = angularPosition.beta;
-	result[2] = angularPosition.theta;
+	result->alpha = angularPosition.alpha;
+	result->beta = angularPosition.beta;
+	result->theta = angularPosition.theta;
 }
 
 /**
  * Accelerometer::getAngularPositionR
  * This method returns the absolute angular position of the sensor in rad
- * @param {double*} result The result array where to put the data 
+ * @param {SAngularPosition*} result The result structure where to put the data 
  * @return {void}
  */
-void Accelerometer::getAngularPositionR(double* result)
+void Accelerometer::getAngularPositionR(SAngularPosition* result)
 {
 	getAngularPositionD(result);
 
-	result[0] = (double) (angularPosition.alpha * PI / 180);
-	result[1] = (double) (angularPosition.beta * PI / 180);
-	result[2] = (double) (angularPosition.theta * PI / 180);
+	result->alpha = (double) (result->alpha * PI / 180);
+	result->beta = (double) (result->beta * PI / 180);
+	result->theta = (double) (result->theta * PI / 180);
 
 }
 
 /**
  * Accelerometer::removeGravityEffect
  * This method returns the corrected acceleration (without gravity effect)
- * @param {double*} result The result array where to put the data
+ * @param {SLinearAcceleration*} result The result structure where to put the data
  * @return {void} 
  */
-void Accelerometer::removeGravityEffect(double* result)
+void Accelerometer::removeGravityEffect(SLinearAcceleration* result)
 {
-	double rotatedGravity[3];
-	double rotatedAccel[3];
+	/* Calculation variables */
 	double motionAccel[3];
-
-	double angularPosition[3];
-	double linearAcceleration[3];
+	double rotatedAccel[3];
+	double rotatedGravity[3];
 	
 	double gravity[3] = {0.0, 0.0, 1.0};
 
 	
-	getAngularPositionR(angularPosition);
-	getLinearAccelerationG(linearAcceleration);
+	/* Get angular position and linear acceleration */
+	SAngularPosition aP;
+	SLinearAcceleration lA;
 	
-	double alphaRad = angularPosition[0];
-	double betaRad = angularPosition[1];
-	double thetaRad = angularPosition[2];
+	getAngularPositionR(&aP);
+	getLinearAccelerationG(&lA);
+	
 
-  	// Rotation matrix
+  	// Calculation of rotation matrix
 	float R[3][3] =
   	{
-    	{ cos(alphaRad) * cos(betaRad) , cos(alphaRad) * sin(betaRad) * sin(thetaRad) - sin(alphaRad) * cos(thetaRad) , cos(alphaRad) * sin(betaRad) * cos(thetaRad) + sin(alphaRad) * sin(thetaRad) },
-    	{ sin(alphaRad) * cos(betaRad) , sin(alphaRad) * sin(betaRad) * sin(thetaRad) + cos(alphaRad) * cos(thetaRad) , sin(alphaRad) * sin(betaRad) * cos(thetaRad) - cos(alphaRad) * sin(thetaRad) },
-    	{     -1 * sin(betaRad)       ,                  cos(betaRad) * sin(thetaRad)                          ,               cos(betaRad) * cos(thetaRad)                   }
+    	{ cos(aP->alpha) * cos(aP->beta) , cos(aP->alpha) * sin(aP->beta) * sin(aP->theta) - sin(aP->alpha) * cos(aP->theta) , cos(aP->alpha) * sin(aP->beta) * cos(aP->theta) + sin(aP->alpha) * sin(aP->theta) },
+    	{ sin(aP->alpha) * cos(aP->beta) , sin(aP->alpha) * sin(aP->beta) * sin(aP->theta) + cos(aP->alpha) * cos(aP->theta) , sin(aP->alpha) * sin(aP->beta) * cos(aP->theta) - cos(aP->alpha) * sin(aP->theta) },
+    	{     -1 * sin(aP->beta)       ,                  cos(aP->beta) * sin(aP->theta)                          ,               cos(aP->beta) * cos(aP->theta)                   }
   	};
 
 
@@ -308,9 +268,9 @@ void Accelerometer::removeGravityEffect(double* result)
 
   
   	// Apply rotation matrix on accelerometer datas
-  	rotatedAccel[0] = linearAcceleration[0] * R[0][0] + linearAcceleration[1] * R[0][1] + linearAcceleration[2] * R[0][2] ;
-  	rotatedAccel[1] = linearAcceleration[0] * R[1][0] + linearAcceleration[1] * R[1][1] + linearAcceleration[2] * R[1][2] ;
-  	rotatedAccel[2] = linearAcceleration[0] * R[2][0] + linearAcceleration[1] * R[2][1] + linearAcceleration[2] * R[2][2] ;
+  	rotatedAccel[0] = lA->ax * R[0][0] + lA->ay * R[0][1] + lA->az * R[0][2] ;
+  	rotatedAccel[1] = lA->ax * R[1][0] + lA->ay * R[1][1] + lA->az * R[1][2] ;
+  	rotatedAccel[2] = lA->ax * R[2][0] + lA->ay * R[2][1] + lA->az * R[2][2] ;
 
 
   	// Determinate motion acceleration according to previous values (remove gravity effect on rotated acceleration vector)
@@ -320,7 +280,7 @@ void Accelerometer::removeGravityEffect(double* result)
 
 
   	// Restore corrected acceleration vector into his first orientation
-  	result[0] = (double) (motionAccel[0] * R[0][0] + motionAccel[1] * R[1][0] + motionAccel[2] * R[2][0]);
-  	result[1] = (double) (motionAccel[0] * R[0][1] + motionAccel[1] * R[1][1] + motionAccel[2] * R[2][1]);
-  	result[2] = (double) (motionAccel[0] * R[0][2] + motionAccel[1] * R[1][2] + motionAccel[2] * R[2][2]);
+  	result->ax = (double) (motionAccel[0] * R[0][0] + motionAccel[1] * R[1][0] + motionAccel[2] * R[2][0]);
+  	result->ay = (double) (motionAccel[0] * R[0][1] + motionAccel[1] * R[1][1] + motionAccel[2] * R[2][1]);
+  	result->az = (double) (motionAccel[0] * R[0][2] + motionAccel[1] * R[1][2] + motionAccel[2] * R[2][2]);
 }
