@@ -1,6 +1,6 @@
 #include "GPS.h"
 
-GPS::GPS(double[][3]& position, String[]& datetime)
+GPS::GPS(double[][3]* position, String[]* datetime)
 {
 	init();
 	Position = position;
