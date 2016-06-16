@@ -1,0 +1,29 @@
+GPIO Arduino :
+
+Port Digital :
+
+0 : NotConnected
+1 : Red Led Alerte SDCard full (HIGH = alerte)
+2 : Accelerometer(INT)
+3 : Button SDCard Reset (INPUT HIGH on reset)
+4 : DHT(S)
+5 : GPS(RX via pont de résistance)	Arduino TX GPS RX
+6 : GPS(TX)							Arduino RX GPS TX
+7 : SDCard(CS)
+8 : Led RGB (Blue)
+9 : Led RGB (Green)
+10 : Led RGB (Red)
+11 : SDCard(MOSI)
+12 : SDCard(MISO)
+13 : SDCard(SCK)
+
+
+Port Analog :
+
+0 : PhotoResistance
+1 : NotConnected
+2 : NotConnected
+3 : NotConnected
+4 : Accelerometer(SCL)
+5 : Accelerometer(SDA)
+ 
