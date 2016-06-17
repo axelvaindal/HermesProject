@@ -1,8 +1,7 @@
 #include "AlertManager.h"
 
-AlertManager::AlertManager(BufferManager* bufferManager)
+AlertManager::AlertManager()
 {
-    this->bufferManager = bufferManager;
 }
 
 /*
@@ -10,12 +9,15 @@ AlertManager::AlertManager(BufferManager* bufferManager)
  * Check if light value is too high and send an alert to the buffer
  * @param {Light *} light : Light object to check
 */
-void AlertManager::checkLight(SLight* sLight)
+bool AlertManager::checkLight(SAlert* alert, SLight* sLight)
 {
     if(sLight->lightLevel > LightCap)
     {
-        this->createAlert("Light", this->parseSLightToString(sLight));
+        createAlert(alert, "Light", parseSLightToString(sLight));
+        return true;
     }
+
+    return false;
 }
 
 /*
@@ -23,12 +25,15 @@ void AlertManager::checkLight(SLight* sLight)
  * Check if humidity value is too high and send an alert to the buffer
  * @param {Humidity *} humidity : Humidity object to check
 */
-void AlertManager::checkHumidity(SHumidity* sHumidity)
+bool AlertManager::checkHumidity(SAlert* alert, SHumidity* sHumidity)
 {
-    if(sHumidity->humidityLevel > HumidityCap)
+    if(sHumidity->humidity > HumidityCap)
     {
-        this->createAlert("Humidity", this->parseSHumidityToString(sHumidity));
+        createAlert(alert, "Humidity", parseSHumidityToString(sHumidity));
+        return true;
     }
+
+    return false;
 }
 
 /*
@@ -37,14 +42,13 @@ void AlertManager::checkHumidity(SHumidity* sHumidity)
  * @param {String} type: String descripting which type of sensor is sending the alert (Humidity, Light, etc...)
  * @param {String} data: JSON string descripting the values of the sensor
 */
-void AlertManager::createAlert(SAlert* sAlert, String type, String data)
+void AlertManager::createAlert(SAlert* alert, String type, String data)
 {
     this->idAlert++;
-    sAlert->id = idAlert;
-    sAlert->type = type;
-    sAlert->data = data;
 
-    buffermanager->pushAlert(sAlert);
+    alert->id = idAlert;
+    alert->type = type;
+    alert->data = data;
 }
 
 /*
@@ -55,7 +59,7 @@ void AlertManager::createAlert(SAlert* sAlert, String type, String data)
 String AlertManager::parseSLightToString(SLight* sLight)
 {
     String parsedString = "{\"lightLevel\": ";
-    parsedString        += sLight.lightLevel;
+    parsedString        += sLight->lightLevel;
     parsedString        += "}";
     return parsedString;
 }
@@ -68,7 +72,7 @@ String AlertManager::parseSLightToString(SLight* sLight)
 String AlertManager::parseSHumidityToString(SHumidity* sHumidity)
 {
     String parsedString = "{\"humidityLevel\": ";
-    parsedString        += sHumidity.humidityLevel;
+    parsedString        += sHumidity->humidity;
     parsedString        += "}";
     return parsedString;
 }

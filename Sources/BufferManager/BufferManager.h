@@ -2,8 +2,7 @@
 #define BUFFERMANAGER_H
 
 #include "Arduino.h"
-
-
+#include "AlertManager.h"
 
 /*
 * Preprocessor constant to determine the max size of each buffer
@@ -17,9 +16,6 @@
 #define MAXSIZE_TEMPERATURE			50
 #define MAXSIZE_LIGHT				50
 #define MAXSIZE_ALERT				50
-
-
-
 	
 /*
 * Structure representing a circular buffer
@@ -37,7 +33,6 @@ typedef struct SCircularBuffer
 	void* tail;			// Pointer to tail (cursor to the next reading slot)
 	
 } SCircularBuffer;
-
 
 /*
 * BufferManager class
@@ -93,6 +88,11 @@ class BufferManager
 		uint8_t dataCountLight();
 		uint8_t dataCountAlert();
 
+		/* Getter and setter methods */
+
+		void setAlertManager(AlertManager* a);
+		AlertManager* getAlertManager();
+
 	private:
 		/*
 		* Private attributes, one per datatype to store
@@ -104,6 +104,9 @@ class BufferManager
 		SCircularBuffer bufferTemperature;
 		SCircularBuffer bufferLight;
 		SCircularBuffer bufferAlert;
+
+		AlertManager* alertManager = NULL;
+
 	
 		/*
 		* Private methods
@@ -122,9 +125,7 @@ class BufferManager
 		* Generic checking methods
 		*/
 		bool dataAvailable(SCircularBuffer* cb);
-		uint8_t dataCount(SCircularBuffer* cb);
-		
-	
+		uint8_t dataCount(SCircularBuffer* cb);	
 };
 
 #endif

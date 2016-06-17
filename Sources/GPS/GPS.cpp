@@ -32,25 +32,25 @@ bool GPS::read()
 
 		if (tinyGps.date.isValid() && tinyGps.time.isValid())
 		{
-			datetime.concat(tinyGps.date.day());
-			datetime.concat("/");
-			datetime.concat(tinyGps.date.month());
-			datetime.concat("/");
-			datetime.concat(tinyGps.date.year());
-			datetime.concat(" ");
-			datetime.concat(tinyGps.time.hour());
-		    datetime.concat(":");
-			datetime.concat(tinyGps.time.minute());
-		    datetime.concat(":");
-			datetime.concat(tinyGps.time.second());
+			clock.datetime.concat(tinyGps.date.day());
+			clock.datetime.concat("/");
+			clock.datetime.concat(tinyGps.date.month());
+			clock.datetime.concat("/");
+			clock.datetime.concat(tinyGps.date.year());
+			clock.datetime.concat(" ");
+			clock.datetime.concat(tinyGps.time.hour());
+		    clock.datetime.concat(":");
+			clock.datetime.concat(tinyGps.time.minute());
+		    clock.datetime.concat(":");
+			clock.datetime.concat(tinyGps.time.second());
 			
 		}
 		else
 		{
-			datetime = "INVALID";
+			clock.datetime = "INVALID";
 		}
 
-        push(coordinate, datetime);
+        push(coordinate, clock);
 		return true;
 	}
 
@@ -83,7 +83,7 @@ void GPS::push(SCoordinate coordinate, SDatetime datetime)
 	Serial.print("longitude : ");
     Serial.println(coordinate.longitude);
 	Serial.print("date : ");
-	Serial.println(datetime);
+	Serial.println(clock.datetime);
 	Serial.println("");
 }
 

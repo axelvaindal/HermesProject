@@ -95,7 +95,7 @@ class Accelerometer
 		*/
 		void init();
 		void update();
-		void Accelerometer::read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAngularPosition* aP);
+		void read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAngularPosition* aP);
 		
 		/**
 		 * Linear Acceleration Methods

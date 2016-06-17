@@ -39,14 +39,14 @@ class LightSensor
 		* This method get the light level from the light sensor and store the value in the lighLevel variable
 		* @return {int}
 		*/
-		int read();
+		void read();
 		
 		/**
 		* getLightLevel method
 		* This method return the light level between 0 and 1023
 		* @return {int}
 		*/
-		int getLightLevel();
+		SLight getLight();
 };
 
 #endif

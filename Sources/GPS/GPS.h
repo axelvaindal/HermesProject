@@ -17,7 +17,7 @@ typedef struct SCoordinate
 
 typedef struct SDatetime
 {
-    String Datetime;
+    String datetime;
 } SDatetime;
 
 /**
@@ -51,10 +51,9 @@ class GPS
 		 */
 		TinyGPSPlus tinyGps;
 		SoftwareSerial ss;
-        SCoordinate coordinate;
-        SDatetime datetime;
 
-		
+        SCoordinate coordinate;
+        SDatetime clock;
 };
 
 #endif // !GPS_H

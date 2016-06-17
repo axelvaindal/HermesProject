@@ -203,9 +203,9 @@ void Accelerometer::getAngularPositionD(SAngularPosition* result)
 	SAngularAcceleration a;
 	getAngularAccelerationDPS(&a);
 
-	angularPosition.alpha 	+= (double) (a->gx * deltaTime / 1000);
-	angularPosition.beta 	+= (double) (a->gy * deltaTime / 1000);
-	angularPosition.theta 	+= (double) (a->gz * deltaTime / 1000);
+	angularPosition.alpha 	+= (double) (a.gx * deltaTime / 1000);
+	angularPosition.beta 	+= (double) (a.gy * deltaTime / 1000);
+	angularPosition.theta 	+= (double) (a.gz * deltaTime / 1000);
 
 	result->alpha = angularPosition.alpha;
 	result->beta = angularPosition.beta;
@@ -255,9 +255,9 @@ void Accelerometer::removeGravityEffect(SLinearAcceleration* result)
   	// Calculation of rotation matrix
 	float R[3][3] =
   	{
-    	{ cos(aP->alpha) * cos(aP->beta) , cos(aP->alpha) * sin(aP->beta) * sin(aP->theta) - sin(aP->alpha) * cos(aP->theta) , cos(aP->alpha) * sin(aP->beta) * cos(aP->theta) + sin(aP->alpha) * sin(aP->theta) },
-    	{ sin(aP->alpha) * cos(aP->beta) , sin(aP->alpha) * sin(aP->beta) * sin(aP->theta) + cos(aP->alpha) * cos(aP->theta) , sin(aP->alpha) * sin(aP->beta) * cos(aP->theta) - cos(aP->alpha) * sin(aP->theta) },
-    	{     -1 * sin(aP->beta)       ,                  cos(aP->beta) * sin(aP->theta)                          ,               cos(aP->beta) * cos(aP->theta)                   }
+    	{ cos(aP.alpha) * cos(aP.beta) , cos(aP.alpha) * sin(aP.beta) * sin(aP.theta) - sin(aP.alpha) * cos(aP.theta) , cos(aP.alpha) * sin(aP.beta) * cos(aP.theta) + sin(aP.alpha) * sin(aP.theta) },
+    	{ sin(aP.alpha) * cos(aP.beta) , sin(aP.alpha) * sin(aP.beta) * sin(aP.theta) + cos(aP.alpha) * cos(aP.theta) , sin(aP.alpha) * sin(aP.beta) * cos(aP.theta) - cos(aP.alpha) * sin(aP.theta) },
+    	{     -1 * sin(aP.beta)       ,                  cos(aP.beta) * sin(aP.theta)                          ,               cos(aP.beta) * cos(aP.theta)                   }
   	};
 
 
@@ -268,9 +268,9 @@ void Accelerometer::removeGravityEffect(SLinearAcceleration* result)
 
   
   	// Apply rotation matrix on accelerometer datas
-  	rotatedAccel[0] = lA->ax * R[0][0] + lA->ay * R[0][1] + lA->az * R[0][2] ;
-  	rotatedAccel[1] = lA->ax * R[1][0] + lA->ay * R[1][1] + lA->az * R[1][2] ;
-  	rotatedAccel[2] = lA->ax * R[2][0] + lA->ay * R[2][1] + lA->az * R[2][2] ;
+  	rotatedAccel[0] = lA.ax * R[0][0] + lA.ay * R[0][1] + lA.az * R[0][2] ;
+  	rotatedAccel[1] = lA.ax * R[1][0] + lA.ay * R[1][1] + lA.az * R[1][2] ;
+  	rotatedAccel[2] = lA.ax * R[2][0] + lA.ay * R[2][1] + lA.az * R[2][2] ;
 
 
   	// Determinate motion acceleration according to previous values (remove gravity effect on rotated acceleration vector)

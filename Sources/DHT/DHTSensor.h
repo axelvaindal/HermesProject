@@ -27,8 +27,8 @@ class DHTSensor
         DHTSensor();
         DHTSensor(int _pin);
 		bool read();
-		int8_t getTemperature();
-		int8_t getHumidity();
+		STemperature getTemperature();
+		SHumidity getHumidity();
 };
 
 #endif

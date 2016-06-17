@@ -24,23 +24,23 @@
 * Writter library
 */
 
-#include "SDWritter.h"
+#include "SDWriter.h"
 
 /**
 * Thread Working Area Declaration
 */
 
-static WORKING_AREA(waGPS, 1);
+/*static WORKING_AREA(waGPS, 1);
 static WORKING_AREA(waDHTLight, 1);
 static WORKING_AREA(waWritter, 1);
-static WORKING_AREA(waAccelerometer, 1);
+static WORKING_AREA(waAccelerometer, 1);*/
 
 /**
 * Variables declaration
 */
 
 BufferManager* b;
-AlertManager a(b);
+AlertManager* a;
 
 /**
  * Setup Function
@@ -55,6 +55,8 @@ void setup()
 	cli();
  	halInit();
   	chSysInit();
+
+  	b->setAlertManager(a);
 }
 
 /**
