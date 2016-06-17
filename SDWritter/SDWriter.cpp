@@ -8,37 +8,136 @@
 SDWriter::SDWriter(String _groupID)
 {
 	groupID = _groupID;
-	SD.begin(10);
-	attachInterrupt(digitalPinToInterrupt(3), eraseSD, RISING);
+	pin = 10;
+
+	pinMode(ledPin, OUTPUT);
+	pinMode(interruptPin, INPUT_PULLUP);
+	attachInterrupt(digitalPinToInterrupt(interruptPin), eraseSD, CHANGE);
 }
 
 /**
 * SDWriter
 * Overrided constructor
-* @param String _groupID
-* 		int _pin
+* @param {String} _groupID
+* @param {int} _pin
 */
-SDWriter::SDWriter(String _groupID,int _pin)
+SDWriter::SDWriter(String _groupID, int p)
 {
 	groupID = _groupID;
-	SD.begin(_pin);
-	attachInterrupt(digitalPinToInterrupt(3), eraseSD, RISING);
+	pin = p;
+
+	pinMode(ledPin, OUTPUT);
+	pinMode(interruptPin, INPUT_PULLUP);
+	attachInterrupt(digitalPinToInterrupt(interruptPin), eraseSD, CHANGE);
+}
+
+/**
+* initialize
+* Initialize Writter and SD Card behavior
+* @return {void}
+*/
+bool SDWriter::initialize()
+{
+	Sd2Card card;
+	card.init(SPI_HALF_SPEED, pin);
+
+	SdVolume volume;
+  	volume.init(card);
+  
+  	volumesize = volume.blocksPerCluster() * volume.clusterCount() * 512;
+
+	if (!SD.begin(pin))
+		state = false;
+	else
+		state = true;
+
+	return state;
+}
+
+/**
+* isInitialized
+* Check if SD Card and Library are initialized
+* @return {bool} state Internal state of the writer
+*/
+bool SDWriter::isInitialized()
+{
+	return state;
+}
+
+/**
+* addToJSONString
+* Add key/value to internal json string.
+* @param {String} key 	JSON Key to be written
+* @param {String} value JSON Value to be written
+*/
+void SDWriter::addToJSONString(String key, String value)
+{
+	json += "\"" + key + "\": " + value + ",";
+}
+
+/**
+* pushToSD
+* Push json string in open file.
+* @return {void}
+*/
+void SDWriter::pushToSD()
+{	
+	if(!openFile)
+		changeOpenFile();
+	
+	bool endOfFile = false;
+	
+	if(cmp <= MAX_LINE_PER_FILE)
+	{
+		json = json.substring(0, json.length() - 1) + "},";
+	} 
+	else
+	{
+		endOfFile = true;
+		json = json.substring(0, json.length() - 1) + "}]}";
+	}
+	
+	if (openFile.print(json))
+	{
+		openFile.flush();
+		++cmp;
+	}
+	else
+	{
+		openFile.close();
+		state = false;
+	}
+
+	json = "{";
+	
+	
+	if(endOfFile)
+		changeOpenFile();
 }
 
 /**
 * changeOpenFile
-* Private method to switch the opened file. Close the old file and create need file.
+* Private method to switch the opened file. Close the old file and open new file.
+* @return {void}
 */
 void SDWriter::changeOpenFile()
 {
-	if(cmp >= 20)
+	if(cmp >= MAX_LINE_PER_FILE)
 	{
+		totalfilesize += openFile.size();
 		openFile.close();
 	}
 	
-	openFile = SD.open(generateFileName(),FILE_WRITE);
-	openFile.println("{\"DATA\":[");
-	cmp = 0;
+	if (openFile = SD.open(generateFileName(), FILE_WRITE))
+	{
+		openFile.print("{\"DATA\":[");
+		cmp = 0;
+	}
+	else
+	{
+		openFile.close();
+		state = false;
+	}
 }
 
 /**
@@ -87,76 +186,82 @@ String SDWriter::generateFileName()
 }
 
 /**
-* addToJSONString
-* Add key/value to internal json string.
-* @param String key
-* 		String value
-*/
-void SDWriter::addToJSONString(String key,String value)
-{
-	json += "\""+key+"\": "+value+",";
-}
-
-/**
-* pushToSD
-* Push json string in open file.
-*/
-void SDWriter::pushToSD()
-{
-	if(erase)
-		return;
-	
-	if(!openFile)
-		changeOpenFile();
-	
-	bool endOfFile = false;
-	
-	if(cmp <= 20)
-	{
-		json = json.substring(0, json.length() - 1) +"},";
-	} 
-	else
-	{
-		endOfFile = true;
-		json = json.substring(0, json.length() - 1) +"}]}";
-	}
-	
-	openFile.println(json);
-	openFile.flush();
-	json = "{";
-	++cmp;
-	
-	if(endOfFile)
-		changeOpenFile();
-}
-
-/**
 * eraseSD
 * Delete SD content
 */
 void SDWriter::eraseSD()
 {
-	erase = true;
 	File dir = SD.open("/");
 	File file;
 
+	digitalWrite(ledPin, HIGH);
     while(true) 
     {
-		file =  dir.openNextFile();
+    	Serial.println("Delete file");
+		file = dir.openNextFile();
 		if (file) 
 		{
-			SD.remove( file.name() ) ;
+			SD.remove(file.name());
+			file.close();
 		} 
 		else 
 		{
 		  break;
 		}
-		
     }
-	// TO DO
-	openFile.close();
-	SD.remove (openFile.name());
-	//
-	erase = false;
+    digitalWrite(ledPin, LOW);
 }
+
+/**
+ * isSDCardFull
+ * Check if SD Card memory is full
+ * @return {bool} True if card full or false otherwise
+ */
+bool SDWriter::isSDCardFull()
+{
+	File dir = SD.open("/");
+	File entry;
+
+	int32_t filesize;
+
+  	dir.openNextFile();
+  	
+  	while(entry = dir.openNextFile()) 
+    {
+      	filesize += entry.size();
+      	entry.close();
+    }
+
+    if (volumesize - totalfilesize > 0)
+    	return true;
+
+    return false;
+}
+
+/**
+ * isSDCardEmpty
+ * Check if SD Card memory is empty
+ * @return {bool} True if card empty or false otherwise
+ */
+bool SDWriter::isSDCardEmpty()
+{
+	File dir = SD.open("/");
+	File entry;
+
+	int32_t filesize;
+
+  	dir.openNextFile();
+  	
+  	while(entry = dir.openNextFile()) 
+    {
+      	filesize += entry.size();
+      	entry.close();
+    }
+
+    if (filesize == 0)
+    	return true;
+
+    return false;
+}
+
 

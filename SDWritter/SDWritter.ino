@@ -1,24 +1,24 @@
 #include "SDWriter.h"
-SDWriter Writer("43",10);
+
+SDWriter Writer("43", 10);
 
 void setup()
 {
- Serial.begin(9600);
+	Serial.begin(9600);
+	Writer.initialize();
 }
+
 void loop()
 {
-  writtre();
-  //erase();
- delay(100); 
+	if (Writer.isInitialized())
+	{
+		//Writer.addToJSONString("titi", "toto");
+		//Writer.pushToSD();
+	}
+	else
+	{
+		Writer.raz();
+	}
+    
+  	delay(100); 
 }
-
-void writtre()
-{
-  Writer.addToJSONString("test","tarte");
-  Writer.pushToSD();
-}
-void erase()
-{
-  Writer.eraseSD();
-}
-
