@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <iostream>
 #include <QTextStream>
+#include <QDirIterator>
 
 using namespace std;
 
@@ -13,33 +14,41 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 
-    QString fileLecture = "C:/test.txt";
-    QFile fichierLecture(fileLecture);
-    fichierLecture.open(QIODevice::ReadOnly | QIODevice::Text);
-    QTextStream fluxLecture(&fichierLecture);
+    // On déclare un QDirIterator dans lequel on indique que l'on souhaite parcourir un répertoire et ses sous-répertoires.
+    // De plus, on spécifie le filtre qui nous permettra de récupérer uniquement les fichiers du type souhaité.
+    QString selectDir= "C:/Test/";
+    QStringList listFilter;
+    listFilter << "*.txt";
 
-    QString fileLecture2 = "C:/Qt.txt";
-    QFile fichierLecture2(fileLecture2);
-    fichierLecture2.open(QIODevice::ReadOnly | QIODevice::Text);
-    QTextStream fluxLecture2(&fichierLecture2);
+    QDirIterator dirIterator(selectDir, listFilter ,QDir::Files);
+    // Variable qui contiendra tous les fichiers correspondant à notre recherche
+    QStringList fileList;
 
     // Création d'un objet QFile
-    QFile fileEcriture("C:/ecritureTest.txt");
+    QFile fileEcriture("C:/Test/ecritureTest2.txt");
     // On ouvre notre fichier en lecture seule et on vérifie l'ouverture
     if (!fileEcriture.open(QIODevice::WriteOnly | QIODevice::Text))
-    {
         return 0;
-    }
 
     // Création d'un objet QTextStream à partir de notre objet QFile
     QTextStream fluxEcriture(&fileEcriture);
+    QTextStream fluxLecture;
+    QString content;
     // On choisit le codec correspondant au jeu de caractère que l'on souhaite ; ici, UTF-8
     fluxEcriture.setCodec("UTF-8");
-    // Écriture des différentes lignes dans le fichier
-    QString content2 = fluxLecture2.readAll();
-    QString content = fluxLecture.readAll();
-    fluxEcriture.operator <<(content);
-    fluxEcriture.operator <<(content2);
+
+    // Tant qu'on n'est pas arrivé à la fin de l'arborescence...
+    while(dirIterator.hasNext())
+    {
+        QFile fichierLecture(dirIterator.next());
+        fichierLecture.open(QIODevice::ReadOnly | QIODevice::Text);
+        fluxLecture.setDevice(&fichierLecture);
+        content = fluxLecture.readAll();
+        cout << content.toStdString();
+        fluxEcriture <<(content);
+        fluxLecture.flush();
+    }
+
     Appender w;
     w.show();
 
