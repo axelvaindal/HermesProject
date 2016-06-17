@@ -197,7 +197,6 @@ void SDWriter::eraseSD()
 	digitalWrite(ledPin, HIGH);
     while(true) 
     {
-    	Serial.println("Delete file");
 		file = dir.openNextFile();
 		if (file) 
 		{
@@ -219,19 +218,6 @@ void SDWriter::eraseSD()
  */
 bool SDWriter::isSDCardFull()
 {
-	File dir = SD.open("/");
-	File entry;
-
-	int32_t filesize;
-
-  	dir.openNextFile();
-  	
-  	while(entry = dir.openNextFile()) 
-    {
-      	filesize += entry.size();
-      	entry.close();
-    }
-
     if (volumesize - totalfilesize <= 30000000)
     	return true;
 
