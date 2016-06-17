@@ -17,13 +17,13 @@ class SDWriter
 		SDWriter(String _groupID);
 		SDWriter(String _groupID, int p);
 
-		static void eraseSD(); // OK
-		void pushToSD(); // OK
-		bool initialize(); // OK
+		static void eraseSD();
+		void pushToSD();
+		bool initialize();
 		bool isSDCardFull(); 
-		bool isSDCardEmpty(); // OK
-		bool isInitialized(); // OK
-		void addToJSONString(String key,String value); // OK
+		bool isSDCardEmpty();
+		bool isInitialized();
+		void addToJSONString(String key,String value);
 		void(* raz) (void) = 0;
 
 	private:
@@ -39,10 +39,10 @@ class SDWriter
 		uint32_t volumesize;
 		uint32_t totalfilesize;
 		const byte interruptPin = 3;
-		static const byte ledPin = 6;		
+		static const byte ledPin = 1;		
 		
-		void changeOpenFile(); // OK
-		String generateFileName(); // OK
+		void changeOpenFile();
+		String generateFileName();
 };
 
 #endif

@@ -8,7 +8,7 @@
 SDWriter::SDWriter(String _groupID)
 {
 	groupID = _groupID;
-	pin = 10;
+	pin = 1;
 
 	pinMode(ledPin, OUTPUT);
 	pinMode(interruptPin, INPUT_PULLUP);
