@@ -4,27 +4,17 @@
 #include <ChibiOS_AVR.h>
 
 /**
-* Sensor and state device libraries
-*/
-
-#include "Accelerometer.h"
-#include "DHTSensor.h"
-#include "GPS.h"
-#include "LightSensor.h"
-#include "RGBLed.h"
-
-/**
 * Manager libraries
 */
 
-#include "AlertManager.h"
-#include "BufferManager.h"
+#include <AlertManager.h>
+#include <BufferManager.h>
 
 /**
 * Writter library
 */
 
-#include "SDWriter.h"
+#include <SDWriter.h>
 
 /**
 * Thread Working Area Declaration
@@ -42,6 +32,8 @@ static WORKING_AREA(waAccelerometer, 1);*/
 BufferManager* b;
 AlertManager* a;
 
+SDWriter writer("43", 10);
+
 /**
  * Setup Function
  * This function is used in order to initialize component for the arduino application
@@ -57,6 +49,8 @@ void setup()
   	chSysInit();
 
   	b->setAlertManager(a);
+
+  	writer.initialize();
 }
 
 /**
@@ -66,5 +60,15 @@ void setup()
 
 void loop() 
 {
-
+	if (writer.isInitialized())
+	{
+		writer.addToJSONString("titi", "toto");
+		writer.pushToSD();
+	}
+	else
+	{
+		writer.raz();
+	}
+    
+  	delay(100);
 }
