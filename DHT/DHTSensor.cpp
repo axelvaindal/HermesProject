@@ -7,8 +7,6 @@
 DHTSensor::DHTSensor()
 {
 	pin = 3;
-	temperature = 0;
-	humidity = 0;
 }
 
 /**
@@ -19,16 +17,14 @@ DHTSensor::DHTSensor()
 DHTSensor::DHTSensor(int _pin)
 {
 	pin = _pin;
-	temperature = 0;
-	humidity = 0;
 }
 
 /**
 * getTemperature
 * Get the current internal temperature
-* @return int8_t temperature
+* @return STemperature temperature
 */
-int8_t DHTSensor::getTemperature()
+STemperature DHTSensor::getTemperature()
 {
 	return temperature;
 }
@@ -36,19 +32,19 @@ int8_t DHTSensor::getTemperature()
 /**
 * getHumidity
 * Get the current internal humidity
-* @return int8_t humidity
+* @return SHumidity humidity
 */
-int8_t DHTSensor::getHumidity()
+SHumidity DHTSensor::getHumidity()
 {
 	return humidity;
 }
 
 /**
-* readDHT
+* read
 * Get the current humidity and temperature value form the sensor
 * @return bool if success true else false
 */
-bool DHTSensor::readDHT()
+bool DHTSensor::read()
 {
 	/* data[] -> buffer contenant les données du cpateur
 	* counter -> compteur permettant de savoir quel bit est reçu (bitwise)
@@ -122,8 +118,8 @@ bool DHTSensor::readDHT()
 	* [3] = zéro
 	* [4] = checksum (humidité + température)
 	*/
-	humidity = (int)data[0]; 
-	temperature = (int)data[2]; 
+	humidity.humidity = (int)data[0]; 
+	temperature.temperature = (int)data[2]; 
  
 	/* Vérifie la checksum */
 	if (data[4] != (data[0] + data[2]))
