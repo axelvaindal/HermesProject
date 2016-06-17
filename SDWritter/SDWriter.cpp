@@ -232,7 +232,7 @@ bool SDWriter::isSDCardFull()
       	entry.close();
     }
 
-    if (volumesize - totalfilesize > 0)
+    if (volumesize - totalfilesize <= 30000000)
     	return true;
 
     return false;
