@@ -1,6 +1,6 @@
 #include "AlertManager.h"
 
-AlertManager::AlertManager(BufferManager bufferManager)
+AlertManager::AlertManager(BufferManager* bufferManager)
 {
     this->bufferManager = bufferManager;
 }
@@ -44,7 +44,7 @@ void AlertManager::createAlert(SAlert* sAlert, String type, String data)
     sAlert->type = type;
     sAlert->data = data;
 
-    buffermanager.pushAlert(sAlert);
+    buffermanager->pushAlert(sAlert);
 }
 
 /*
