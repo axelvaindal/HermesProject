@@ -81,18 +81,13 @@ void Accelerometer::read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAng
 	update();
 	
 	/* Linear Acceleration */
-	getLinearAccelerationG(lA);
-	getLinearAccelerationGWithoutGravity(lA);
-	getLinearAccelerationMPS(lA);
 	getLinearAccelerationMPSWithoutGravity(lA);
 	 
 	/* Angular Acceleration */
 	getAngularAccelerationDPS(aA);
-	getAngularAccelerationRPS(aA);
 	 
 	/* Angular Position */
 	getAngularPositionD(aP);
-	getAngularPositionR(aP);
 }
 
 /**

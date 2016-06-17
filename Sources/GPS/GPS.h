@@ -35,7 +35,7 @@ class GPS
 		/**
 		 * Public Methods
 		 */
-		bool read();
+		bool read(SCoordinate* c, SDatetime* clk);
 
 	private:
 		/**
@@ -43,7 +43,6 @@ class GPS
 		 */
 
 		void init();
-        void push(SCoordinate coordinate, SDatetime datetime);
 		bool check();
 
 		/**
@@ -51,9 +50,6 @@ class GPS
 		 */
 		TinyGPSPlus tinyGps;
 		SoftwareSerial ss;
-
-        SCoordinate coordinate;
-        SDatetime clock;
 };
 
 #endif // !GPS_H

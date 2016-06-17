@@ -9,6 +9,7 @@
 
 #include <AlertManager.h>
 #include <BufferManager.h>
+#include <RGBLed.h>
 
 /**
 * Writter library
@@ -20,10 +21,10 @@
 * Thread Working Area Declaration
 */
 
-/*static WORKING_AREA(waGPS, 1);
+static WORKING_AREA(waGPS, 1);
 static WORKING_AREA(waDHTLight, 1);
-static WORKING_AREA(waWritter, 1);
-static WORKING_AREA(waAccelerometer, 1);*/
+static WORKING_AREA(waWriter, 1);
+static WORKING_AREA(waAccelerometer, 1);
 
 /**
 * Variables declaration
@@ -33,6 +34,21 @@ BufferManager* b;
 AlertManager* a;
 
 SDWriter writer("43", 10);
+
+Accelerometer accelerometer;
+DHTSensor dht;
+GPS gps;
+LightSensor light;
+RGBLed rgb;
+
+SLinearAcceleration linearAcceleration;
+SAngularAcceleration angularAcceleration;
+SAngularPosition angularPosition;
+STemperature temperature;
+SHumidity humidity;
+SLight lightLevel;
+SCoordinate coordinate;
+SDatetime clock;
 
 /**
  * Setup Function
@@ -51,6 +67,8 @@ void setup()
   	b->setAlertManager(a);
 
   	writer.initialize();
+
+  	accelerometer.init();
 }
 
 /**
@@ -60,9 +78,12 @@ void setup()
 
 void loop() 
 {
+	accelerometer.read(&linearAcceleration, &angularAcceleration, &angularPosition);
+	gps.read(&coordinate, &clock);
+
 	if (writer.isInitialized())
 	{
-		writer.addToJSONString("titi", "toto");
+		writer.addToJSONString("datetime", clock.datetime);
 		writer.pushToSD();
 	}
 	else
@@ -70,5 +91,5 @@ void loop()
 		writer.raz();
 	}
     
-  	delay(100);
+  	delay(1000);
 }

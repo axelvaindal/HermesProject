@@ -14,43 +14,42 @@ GPS::GPS() : ss(RX, TX)
  * Write data in buffers
  * @return {bool}
  */
-bool GPS::read()
+bool GPS::read(SCoordinate* c, SDatetime* clk)
 {
 	if(check())
 	{
 
 		if (tinyGps.location.isValid())
 		{
-            coordinate.latitude = tinyGps.location.lat();
-            coordinate.longitude = tinyGps.location.lng();
+            c->latitude = tinyGps.location.lat();
+            c->longitude = tinyGps.location.lng();
 		}
 		else
 		{
-            coordinate.latitude = 0.0;
-            coordinate.longitude = 0.0;
+            c->latitude = 0.0;
+            c->longitude = 0.0;
 		}
 
 		if (tinyGps.date.isValid() && tinyGps.time.isValid())
 		{
-			clock.datetime.concat(tinyGps.date.day());
-			clock.datetime.concat("/");
-			clock.datetime.concat(tinyGps.date.month());
-			clock.datetime.concat("/");
-			clock.datetime.concat(tinyGps.date.year());
-			clock.datetime.concat(" ");
-			clock.datetime.concat(tinyGps.time.hour());
-		    clock.datetime.concat(":");
-			clock.datetime.concat(tinyGps.time.minute());
-		    clock.datetime.concat(":");
-			clock.datetime.concat(tinyGps.time.second());
+			clk->datetime.concat(tinyGps.date.day());
+			clk->datetime.concat("/");
+			clk->datetime.concat(tinyGps.date.month());
+			clk->datetime.concat("/");
+			clk->datetime.concat(tinyGps.date.year());
+			clk->datetime.concat(" ");
+			clk->datetime.concat(tinyGps.time.hour());
+		    clk->datetime.concat(":");
+			clk->datetime.concat(tinyGps.time.minute());
+		    clk->datetime.concat(":");
+			clk->datetime.concat(tinyGps.time.second());
 			
 		}
 		else
 		{
-			clock.datetime = "INVALID";
+			clk->datetime = "INVALID";
 		}
 
-        push(coordinate, clock);
 		return true;
 	}
 
@@ -64,27 +63,7 @@ bool GPS::read()
  */
 void GPS::init()
 {
-	ss.begin(9600);
-	
-}
-
-/**
- * GPS::push
- * NOT IMPLEMENTED
- * Write data in buffers
- * @param {double[2]} position Contain lat and lng datas
- * @param {String} datetime Datetime data
- * @return {void}
- */
-void GPS::push(SCoordinate coordinate, SDatetime datetime)
-{
-	Serial.print("latitude : ");
-    Serial.println(coordinate.latitude);
-	Serial.print("longitude : ");
-    Serial.println(coordinate.longitude);
-	Serial.print("date : ");
-	Serial.println(clock.datetime);
-	Serial.println("");
+	ss.begin(9600);	
 }
 
 /**
