@@ -37,9 +37,10 @@ SDWriter writer("43", 10);
 
 Accelerometer accelerometer;
 DHTSensor dht;
-GPS gps;
+//GPS gps;
 LightSensor light;
 RGBLed rgb;
+
 
 SLinearAcceleration linearAcceleration;
 SAngularAcceleration angularAcceleration;
@@ -79,11 +80,20 @@ void setup()
 void loop() 
 {
 	accelerometer.read(&linearAcceleration, &angularAcceleration, &angularPosition);
-	gps.read(&coordinate, &clock);
+
+	
+	//gps.read(&coordinate, &clock);
+	/*dht.read(&temperature, &humidity);
+
+	String b = "";
+	b.concat("Temperature : ");
+	b.concat(temperature)*/
+
+	
 
 	if (writer.isInitialized())
 	{
-		writer.addToJSONString("datetime", clock.datetime);
+		writer.addToJSONString("DateTime", "Titi");
 		writer.pushToSD();
 	}
 	else
@@ -91,5 +101,5 @@ void loop()
 		writer.raz();
 	}
     
-  	delay(1000);
+  	delay(100);
 }

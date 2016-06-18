@@ -5,8 +5,8 @@
 #include "SoftwareSerial.h"
 #include "Arduino.h"
 
-#define RX 6
-#define TX 5
+#define RX 5
+#define TX 7
 
 
 typedef struct SCoordinate
