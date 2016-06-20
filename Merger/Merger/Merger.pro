@@ -15,6 +15,7 @@ TEMPLATE = app
 SOURCES += main.cpp\
         merger.cpp
 
-HEADERS  += merger.h
+HEADERS  += \
+    merger.hpp
 
 FORMS    += merger.ui
