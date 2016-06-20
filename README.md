@@ -13,6 +13,16 @@ This project is able to handle various form of data, including:
 - DateTime
 - Light level
 
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png" /></p>
+
 ## AUTHORS
 
 Hermes Project is maintained by Exia CESI Toulouse A4L.
+
+## Casing
+
+## UML
+
+## Notes
+
+
