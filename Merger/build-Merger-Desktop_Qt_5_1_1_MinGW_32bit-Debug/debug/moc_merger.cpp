@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'appender.h'
+** Meta object code from reading C++ file 'merger.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.1.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../Appender/appender.h"
+#include "../../Merger/merger.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'appender.h' doesn't include <QObject>."
+#error "The header file 'merger.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.1.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -18,24 +18,24 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_Appender_t {
+struct qt_meta_stringdata_Merger_t {
     QByteArrayData data[1];
-    char stringdata[10];
+    char stringdata[8];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_Appender_t, stringdata) + ofs \
+    offsetof(qt_meta_stringdata_Merger_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData) \
     )
-static const qt_meta_stringdata_Appender_t qt_meta_stringdata_Appender = {
+static const qt_meta_stringdata_Merger_t qt_meta_stringdata_Merger = {
     {
-QT_MOC_LITERAL(0, 0, 8)
+QT_MOC_LITERAL(0, 0, 6)
     },
-    "Appender\0"
+    "Merger\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Appender[] = {
+static const uint qt_meta_data_Merger[] = {
 
  // content:
        7,       // revision
@@ -51,7 +51,7 @@ static const uint qt_meta_data_Appender[] = {
        0        // eod
 };
 
-void Appender::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Merger::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -59,26 +59,26 @@ void Appender::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
     Q_UNUSED(_a);
 }
 
-const QMetaObject Appender::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_Appender.data,
-      qt_meta_data_Appender,  qt_static_metacall, 0, 0}
+const QMetaObject Merger::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_Merger.data,
+      qt_meta_data_Merger,  qt_static_metacall, 0, 0}
 };
 
 
-const QMetaObject *Appender::metaObject() const
+const QMetaObject *Merger::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Appender::qt_metacast(const char *_clname)
+void *Merger::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Appender.stringdata))
-        return static_cast<void*>(const_cast< Appender*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_Merger.stringdata))
+        return static_cast<void*>(const_cast< Merger*>(this));
     return QMainWindow::qt_metacast(_clname);
 }
 
-int Appender::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Merger::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)

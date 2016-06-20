@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-06-16T15:13:26
+# Project created by QtCreator 2016-06-20T09:41:00
 #
 #-------------------------------------------------
 
@@ -8,13 +8,13 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Appender
+TARGET = Merger
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        appender.cpp
+        merger.cpp
 
-HEADERS  += appender.h
+HEADERS  += merger.h
 
-FORMS    += appender.ui
+FORMS    += merger.ui

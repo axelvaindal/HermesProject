@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'appender.ui'
+** Form generated from reading UI file 'merger.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.1.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_APPENDER_H
-#define UI_APPENDER_H
+#ifndef UI_MERGER_H
+#define UI_MERGER_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -22,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Appender
+class Ui_Merger
 {
 public:
     QMenuBar *menuBar;
@@ -30,40 +30,40 @@ public:
     QWidget *centralWidget;
     QStatusBar *statusBar;
 
-    void setupUi(QMainWindow *Appender)
+    void setupUi(QMainWindow *Merger)
     {
-        if (Appender->objectName().isEmpty())
-            Appender->setObjectName(QStringLiteral("Appender"));
-        Appender->resize(400, 300);
-        menuBar = new QMenuBar(Appender);
+        if (Merger->objectName().isEmpty())
+            Merger->setObjectName(QStringLiteral("Merger"));
+        Merger->resize(400, 300);
+        menuBar = new QMenuBar(Merger);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        Appender->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(Appender);
+        Merger->setMenuBar(menuBar);
+        mainToolBar = new QToolBar(Merger);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        Appender->addToolBar(mainToolBar);
-        centralWidget = new QWidget(Appender);
+        Merger->addToolBar(mainToolBar);
+        centralWidget = new QWidget(Merger);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        Appender->setCentralWidget(centralWidget);
-        statusBar = new QStatusBar(Appender);
+        Merger->setCentralWidget(centralWidget);
+        statusBar = new QStatusBar(Merger);
         statusBar->setObjectName(QStringLiteral("statusBar"));
-        Appender->setStatusBar(statusBar);
+        Merger->setStatusBar(statusBar);
 
-        retranslateUi(Appender);
+        retranslateUi(Merger);
 
-        QMetaObject::connectSlotsByName(Appender);
+        QMetaObject::connectSlotsByName(Merger);
     } // setupUi
 
-    void retranslateUi(QMainWindow *Appender)
+    void retranslateUi(QMainWindow *Merger)
     {
-        Appender->setWindowTitle(QApplication::translate("Appender", "Appender", 0));
+        Merger->setWindowTitle(QApplication::translate("Merger", "Merger", 0));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Appender: public Ui_Appender {};
+    class Merger: public Ui_Merger {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_APPENDER_H
+#endif // UI_MERGER_H
