@@ -15,10 +15,9 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QPushButton button("");
-    button.hide();
 
     // Ouverture de la boîte de dialogue, modale
-    QString selectedFolder = QFileDialog::getExistingDirectory(&button, "Select Folder", "C:\\", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    QString selectedFolder = QFileDialog::getExistingDirectory(&button, "Select Folder", "C:\\", QFileDialog::ShowDirsOnly | QFileDialog::HideNameFilterDetails);
 
     // On déclare un QDirIterator dans lequel on indique que l'on souhaite parcourir un répertoire et ses sous-répertoires.
     // De plus, on spécifie le filtre qui nous permettra de récupérer uniquement les fichiers du type souhaité.
@@ -37,6 +36,9 @@ int main(int argc, char *argv[])
 
     // On choisit le codec correspondant au jeu de caractère que l'on souhaite ; ici, UTF-8
     writingStream.setCodec("UTF-8");
+
+    if (!writingFile.open(QIODevice::WriteOnly | QIODevice::Text))
+          return 0;
     // On parcoure le dossier pour fussioner l'ensemble des fichiers
     while(dirIterator.hasNext())
     {
@@ -45,7 +47,9 @@ int main(int argc, char *argv[])
         readingStream.setDevice(&readingFile);
         content = readingStream.readAll();
         writingStream <<(content);
+        writingStream << endl;
         readingStream.flush();
+;
     }
 
     return 0;
