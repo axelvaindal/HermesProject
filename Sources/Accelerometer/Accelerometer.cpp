@@ -81,7 +81,7 @@ void Accelerometer::read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAng
 	update();
 	
 	/* Linear Acceleration */
-	getLinearAccelerationMPSWithoutGravity(lA);
+	getLinearAccelerationMPS(lA);
 	 
 	/* Angular Acceleration */
 	getAngularAccelerationDPS(aA);
@@ -99,7 +99,7 @@ void Accelerometer::update()
 {
 	if (millis() - lastExecution >= deltaTime)
 	{
-		chipset.getMotion6(&(linearAcceleration.ax), &(linearAcceleration.ay), &(linearAcceleration.az), &(angularAcceleration.gx), &(angularAcceleration.gy), &(angularAcceleration.gz));
+		chipset.getMotion6(&(rawData.ax), &(rawData.ay), &(rawData.az), &(rawData.gx), &(rawData.gy), &(rawData.gz));
 	}
 }
 
@@ -111,9 +111,9 @@ void Accelerometer::update()
  */
 void Accelerometer::getLinearAccelerationG(SLinearAcceleration* result)
 {
-	result->ax = (double) (linearAcceleration.ax) / LSB_TO_G_2;
-	result->ay = (double) (linearAcceleration.ay) / LSB_TO_G_2;
-	result->az = (double) (linearAcceleration.az) / LSB_TO_G_2;
+	result->ax = (double) (rawData.ax) / LSB_TO_G_2;
+	result->ay = (double) (rawData.ay) / LSB_TO_G_2;
+	result->az = (double) (rawData.az) / LSB_TO_G_2;
 }
 
 /**
@@ -166,9 +166,9 @@ void Accelerometer::getLinearAccelerationMPSWithoutGravity(SLinearAcceleration* 
  */
 void Accelerometer::getAngularAccelerationDPS(SAngularAcceleration* result)
 {
-	result->gx = (double) (angularAcceleration.gx) / LSB_TO_DPS_250;
-	result->gy = (double) (angularAcceleration.gy) / LSB_TO_DPS_250;
-	result->gz = (double) (angularAcceleration.gz) / LSB_TO_DPS_250;
+	result->gx = (double) (rawData.gx) / LSB_TO_DPS_250;
+	result->gy = (double) (rawData.gy) / LSB_TO_DPS_250;
+	result->gz = (double) (rawData.gz) / LSB_TO_DPS_250;
 }
 
 /**

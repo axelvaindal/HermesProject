@@ -37,7 +37,7 @@ SDWriter writer("43", 10);
 
 Accelerometer accelerometer;
 DHTSensor dht;
-//GPS gps;
+GPS gps;
 LightSensor light;
 RGBLed rgb;
 
@@ -65,6 +65,9 @@ void setup()
  	halInit();
   	chSysInit();
 
+  	Serial.begin(9600);
+  	Serial.println("Debut de la liaison serie");
+
   	b->setAlertManager(a);
 
   	writer.initialize();
@@ -79,19 +82,22 @@ void setup()
 
 void loop() 
 {
+	/* Sensors reading procedures */
 	accelerometer.read(&linearAcceleration, &angularAcceleration, &angularPosition);
+	dht.read(&humidity, &temperature);
+	gps.read(&coordinate, &clock);
+	light.read(&lightLevel);
 
+	String t = "Cooordonnees GPS: ";
+	t.concat(coordinate.longitude);
+	t.concat("/");
+	t.concat(coordinate.latitude);
+	t.concat("/");
+	t.concat(clock.datetime);
 	
-	//gps.read(&coordinate, &clock);
-	/*dht.read(&temperature, &humidity);
-
-	String b = "";
-	b.concat("Temperature : ");
-	b.concat(temperature)*/
-
-	
-
-	if (writer.isInitialized())
+	Serial.println(t);
+	/* Writter writting procedure */
+	/*if (writer.isInitialized())
 	{
 		writer.addToJSONString("DateTime", "Titi");
 		writer.pushToSD();
@@ -99,7 +105,13 @@ void loop()
 	else
 	{
 		writer.raz();
-	}
-    
-  	delay(100);
+	}*/
+
+	  rgb.lightOn(255,0,0);// color RED
+	  delay(1000);
+	  rgb.lightOn(180,70,0); //color YELLOW
+	  delay(1000);
+	  rgb.lightOn(0,150,0);//color GREEN
+	  delay(1000);
+
 }

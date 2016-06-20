@@ -19,17 +19,12 @@ typedef struct STemperature
  */
 class DHTSensor
 {
-	//STemperature* temperature, SHumidity* humidity
 	private:
 		int8_t pin;
-		SHumidity humidity;
-		STemperature temperature;
 	public:
         DHTSensor();
         DHTSensor(int _pin);
-		bool read();
-		STemperature getTemperature();
-		SHumidity getHumidity();
+		bool read(SHumidity* h, STemperature* t);
 };
 
 #endif

@@ -16,13 +16,14 @@ GPS::GPS() : ss(RX, TX)
  */
 bool GPS::read(SCoordinate* c, SDatetime* clk)
 {
-	if(check())
+	if (check())
 	{
-
-		if (tinyGps.location.isValid())
+		if (true)
 		{
-            c->latitude = tinyGps.location.lat();
-            c->longitude = tinyGps.location.lng();
+            //c->latitude = tinyGps.location.lat();
+            //c->longitude = tinyGps.location.lng();
+            c->latitude = 1.8;
+            c->longitude = 1.4;
 		}
 		else
 		{
@@ -42,8 +43,7 @@ bool GPS::read(SCoordinate* c, SDatetime* clk)
 		    clk->datetime.concat(":");
 			clk->datetime.concat(tinyGps.time.minute());
 		    clk->datetime.concat(":");
-			clk->datetime.concat(tinyGps.time.second());
-			
+			clk->datetime.concat(tinyGps.time.second());	
 		}
 		else
 		{
@@ -51,8 +51,9 @@ bool GPS::read(SCoordinate* c, SDatetime* clk)
 		}
 
 		return true;
+		
 	}
-
+	
 	return false;
 }
 
