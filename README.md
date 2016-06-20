@@ -13,7 +13,7 @@ This project is able to handle various form of data, including:
 - DateTime
 - Light level
 
-![View](https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png)
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png" /></p>
 
 ## AUTHORS
 
