@@ -18,3 +18,11 @@ This project is able to handle various form of data, including:
 ## AUTHORS
 
 Hermes Project is maintained by Exia CESI Toulouse A4L.
+
+## Casing
+
+## UML
+
+## Notes
+
+
