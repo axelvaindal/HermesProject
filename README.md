@@ -1,7 +1,7 @@
-# Hermes Project
+<h1>Hermes Project</h1>
 
-Hermes Project is an autonomous connected device in order to store alerts during shipping.
-This project is able to handle various form of data, including:
+<p>Hermes Project is an autonomous connected device in order to store alerts during shipping.
+This project is able to handle various form of data, including:</p>
 
 - Temperature
 - Humidity
@@ -14,7 +14,7 @@ This project is able to handle various form of data, including:
 Hermes Project is maintained by Exia CESI Toulouse A4L.
 This repository is for educational purpose only and you can use it as an example for any
 engineering project. 
-Each process and step are documented below.
+<p>Each process and step are documented below.</p>
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png" /></p>
 
