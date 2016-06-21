@@ -126,35 +126,6 @@ border-radius:3px;</string>
      <string notr="true">background-color:#fff</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="regex">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>140</y>
-      <width>271</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:#fff</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>140</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:#fff</string>
-    </property>
-    <property name="text">
-     <string>Expression à retirer</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
@@ -171,6 +142,40 @@ font:&quot;Roboto&quot;;</string>
     </property>
     <property name="text">
      <string>Hermes Merger</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="merge_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>190</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#fff;
+border-radius:3px;</string>
+    </property>
+    <property name="text">
+     <string>Ajouter un filtre de texte</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="merge_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>190</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#fff;
+border-radius:3px;</string>
+    </property>
+    <property name="text">
+     <string>Ajouter un champ</string>
     </property>
    </widget>
   </widget>

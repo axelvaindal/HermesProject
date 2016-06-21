@@ -17,7 +17,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -37,8 +36,10 @@ public:
     QPushButton *merge;
     QLineEdit *folder;
     QLineEdit *json;
+    QLineEdit *regex;
+    QLabel *label_3;
+    QLabel *label_4;
     QMenuBar *menuBar;
-    QMenu *menuMerger;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -46,36 +47,59 @@ public:
     {
         if (Merger->objectName().isEmpty())
             Merger->setObjectName(QStringLiteral("Merger"));
-        Merger->resize(400, 300);
+        Merger->resize(474, 290);
+        Merger->setStyleSheet(QStringLiteral("background-color:rgb(9, 0, 83);"));
         centralWidget = new QWidget(Merger);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         selectFolder = new QPushButton(centralWidget);
         selectFolder->setObjectName(QStringLiteral("selectFolder"));
-        selectFolder->setGeometry(QRect(140, 50, 121, 24));
+        selectFolder->setGeometry(QRect(380, 60, 71, 24));
+        selectFolder->setStyleSheet(QLatin1String("background-color:#fff;\n"
+"border-radius : 3px;"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 50, 91, 20));
+        label->setGeometry(QRect(20, 60, 91, 20));
+        label->setStyleSheet(QStringLiteral("color:#fff"));
         selectJson = new QPushButton(centralWidget);
         selectJson->setObjectName(QStringLiteral("selectJson"));
-        selectJson->setGeometry(QRect(140, 90, 121, 24));
+        selectJson->setGeometry(QRect(380, 100, 71, 24));
+        selectJson->setStyleSheet(QLatin1String("background-color:#fff;\n"
+"border-radius:3px;"));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(0, 90, 141, 16));
+        label_2->setGeometry(QRect(20, 100, 141, 16));
+        label_2->setStyleSheet(QStringLiteral("color:#fff"));
         merge = new QPushButton(centralWidget);
         merge->setObjectName(QStringLiteral("merge"));
-        merge->setGeometry(QRect(150, 150, 75, 24));
+        merge->setGeometry(QRect(380, 190, 71, 41));
+        merge->setStyleSheet(QLatin1String("background-color:#fff;\n"
+"border-radius:3px;"));
         folder = new QLineEdit(centralWidget);
         folder->setObjectName(QStringLiteral("folder"));
-        folder->setGeometry(QRect(270, 50, 113, 22));
+        folder->setGeometry(QRect(180, 60, 181, 22));
+        folder->setStyleSheet(QStringLiteral("background-color:#fff"));
         json = new QLineEdit(centralWidget);
         json->setObjectName(QStringLiteral("json"));
-        json->setGeometry(QRect(270, 90, 113, 22));
+        json->setGeometry(QRect(180, 100, 181, 22));
+        json->setStyleSheet(QStringLiteral("background-color:#fff"));
+        regex = new QLineEdit(centralWidget);
+        regex->setObjectName(QStringLiteral("regex"));
+        regex->setGeometry(QRect(180, 140, 271, 22));
+        regex->setStyleSheet(QStringLiteral("background-color:#fff"));
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(20, 140, 141, 16));
+        label_3->setStyleSheet(QStringLiteral("color:#fff"));
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(130, 0, 211, 41));
+        label_4->setStyleSheet(QLatin1String("color:#fff;\n"
+"font-size : 30px;\n"
+"font:\"Roboto\";"));
         Merger->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Merger);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 21));
-        menuMerger = new QMenu(menuBar);
-        menuMerger->setObjectName(QStringLiteral("menuMerger"));
+        menuBar->setGeometry(QRect(0, 0, 474, 21));
         Merger->setMenuBar(menuBar);
         mainToolBar = new QToolBar(Merger);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -83,8 +107,6 @@ public:
         statusBar = new QStatusBar(Merger);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         Merger->setStatusBar(statusBar);
-
-        menuBar->addAction(menuMerger->menuAction());
 
         retranslateUi(Merger);
 
@@ -99,7 +121,8 @@ public:
         selectJson->setText(QApplication::translate("Merger", "Parcourir", 0));
         label_2->setText(QApplication::translate("Merger", "Fichier de destination", 0));
         merge->setText(QApplication::translate("Merger", "Fusionner", 0));
-        menuMerger->setTitle(QApplication::translate("Merger", "Merger", 0));
+        label_3->setText(QApplication::translate("Merger", "Expression \303\240 retirer", 0));
+        label_4->setText(QApplication::translate("Merger", "Hermes Merger", 0));
     } // retranslateUi
 
 };

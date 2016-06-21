@@ -39,10 +39,24 @@ void Merger::on_merge_clicked()
     merge();
 }
 
+void Merger::on_addField_clicked()
+{
+    merge();
+}
+
+void Merger::on_addFilter_clicked()
+{
+    merge();
+}
+
+
 void Merger::merge()
 {
     QString selectedFolder =  ui->folder->text();
     QString selectedFile = ui->json->text();
+    QString regexQuery = ui->regex->text().replace();
+    QRegularExpression re = QRegularExpression(ui->regex->text());
+
     // On déclare un QDirIterator dans lequel on indique que l'on souhaite parcourir un répertoire et ses sous-répertoires.
     // De plus, on spécifie le filtre qui nous permettra de récupérer uniquement les fichiers du type souhaité.
     QStringList listFilter;
@@ -58,6 +72,7 @@ void Merger::merge()
 
     if (!writingFile.open(QIODevice::WriteOnly | QIODevice::Text))
           return ;
+
     // On parcoure le dossier pour fussioner l'ensemble des fichiers
     while(dirIterator.hasNext())
     {
@@ -65,6 +80,7 @@ void Merger::merge()
         readingFile.open(QIODevice::ReadOnly | QIODevice::Text);
         readingStream.setDevice(&readingFile);
         content = readingStream.readAll();
+        content.remove(re);
         writingStream <<(content);
         writingStream << endl;
         readingStream.flush();

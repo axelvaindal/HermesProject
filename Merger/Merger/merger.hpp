@@ -19,6 +19,8 @@ private slots:
    void on_selectFolder_clicked();
    void on_selectJson_clicked();
    void on_merge_clicked();
+   void on_addField_clicked();
+   void on_addFilter_clicked();
 
 private:
     void merge();
