@@ -19,7 +19,18 @@ engineering project. <br /> Each process and step are documented below.</p>
 
 # Chronology
 
-# Heuristic Map
+<p>The chronology included below demonstrate the work done in a very short amount of time.
+Each part of the project has been represented inside.</p>
+
+# Mind Map
+
+<p>A mind map is a diagram used to visually organize information.
+Often used during brainstorming session, Mind Map are particulary suited in order to understand
+concept and ideas during team sessions. </p>
+
+<p>The Mind Map below shows the entire project area, with all particularities and was drawn during the opening
+session of the project. The objective was to find the more constraints as possible in order to make easiest the future designing session.</p>
+
 
 # Phase 1 - Connected Device 
 
