@@ -30,16 +30,20 @@ Each process and step are documented below.
 
 #### Casing 2D Designing
 
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233852/fba02162-37cf-11e6-8098-4db12e32b809.jpg" /></p>
+
 #### Casing 3D Designing 
 
-#### Friezting
+#### Prototyping with Fritzing
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16234120/cedd3722-37d0-11e6-8bb0-04d2fe67dd39.png" /></p>
 
-#### 
 
 ### General Overview - Software
 
+#### UML Component Diagram
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233778/c7598204-37cf-11e6-8e46-18837fe142e8.png" /></p>
 
 ## Production
 
