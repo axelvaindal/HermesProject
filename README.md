@@ -28,7 +28,18 @@ Each process and step are documented below.
 
 ### General Overview - Hardware
 
+#### Casing 2D Designing
+
+#### Casing 3D Designing 
+
+#### Friezting
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16234120/cedd3722-37d0-11e6-8bb0-04d2fe67dd39.png" /></p>
+
+#### 
+
 ### General Overview - Software
+
 
 ## Production
 
