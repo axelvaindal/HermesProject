@@ -24,6 +24,6 @@ Port Analog :
 1 : NotConnected
 2 : NotConnected
 3 : NotConnected
-4 : Accelerometer(SCL)
-5 : Accelerometer(SDA)
+4 : Accelerometer(SDA)
+5 : Accelerometer(SCL)
  
