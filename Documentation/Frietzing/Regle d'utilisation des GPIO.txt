@@ -7,12 +7,12 @@ Port Digital :
 2 : Accelerometer(INT)
 3 : Button SDCard Reset (INPUT HIGH on reset)
 4 : DHT(S)
-5 : GPS(RX via pont de résistance)	Arduino TX GPS RX
-6 : GPS(TX)							Arduino RX GPS TX
-7 : SDCard(CS)
+5 : GPS(RX via pont de rÃ©sistance)	Arduino TX GPS RX
+6 : Led RGB (Red)
+7 : GPS(TX)							Arduino RX GPS TX
 8 : Led RGB (Blue)
 9 : Led RGB (Green)
-10 : Led RGB (Red)
+10 : SDCard(CS)
 11 : SDCard(MOSI)
 12 : SDCard(MISO)
 13 : SDCard(SCK)
@@ -24,6 +24,6 @@ Port Analog :
 1 : NotConnected
 2 : NotConnected
 3 : NotConnected
-4 : Accelerometer(SCL)
-5 : Accelerometer(SDA)
+4 : Accelerometer(SDA)
+5 : Accelerometer(SCL)
  
