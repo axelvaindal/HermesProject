@@ -1,5 +1,7 @@
 <h1>Hermes Project</h1>
 
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16308198/54ea414a-3964-11e6-9d4b-2ba3543733ee.jpg" /></p>
+
 <p>Hermes Project is an autonomous connected device in order to store alerts during shipping.
 This project is able to handle various form of data, including:</p>
 
@@ -47,7 +49,6 @@ session of the project. The objective was to find the more constraints as possib
 #### Prototyping with Fritzing
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16234120/cedd3722-37d0-11e6-8bb0-04d2fe67dd39.png" /></p>
-
 
 ### General Overview - Software
 
