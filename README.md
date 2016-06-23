@@ -36,7 +36,7 @@ session of the project. The objective was to find the more constraints as possib
 
 # Phase 1 - Connected Device 
 
-During the first phase, we had to work in order to create the connected device used to collect data in order to proceed the further big data analysis.
+During the first phase, team's goal was to create the connected device used to collect data in order to proceed the further big data analysis.
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png" /></p>
 
@@ -76,9 +76,15 @@ Each part of the casing has been printed with a 3D Printer inside Exia Cesi Toul
 
 ### Step 1 - Proofs of Concept
 
+
+
 ### Step 2 - Module development and cleaning
 
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233777/c7594578-37cf-11e6-876c-b93a359413e6.png"/></p>
+
 ### Step 3 - Integration and optimization
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233779/c76849d8-37cf-11e6-98d1-e3766d274eb1.png"/></p>
 
 # Phase 2 - Big Data and Business Intelligence
 
