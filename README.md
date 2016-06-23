@@ -101,9 +101,13 @@ Sources can be found inside this repository.
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16323140/ca06e606-39a8-11e6-9b00-c480129da958.png"/></p>
 
-## Step 2 - Exploitation Software and Web Based Interface
+## Step 2 - Exploitation Software
 
+Finally, in order to retrieve indicator and statistics about shipping, an exploitation software has been developed.
+This software is able to browse inside JSON Collection stored into a CouchDB Database (NoSQL) and draw a map of the shipping with all major alerts displayed.
+Sources can be found inside this repository.
 
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16323573/11e07250-39ac-11e6-85c0-06c3d2e385c8.png"/></p>
 
 # Additional notes and improvement ideas
 
