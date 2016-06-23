@@ -34,6 +34,8 @@ concept and ideas during team sessions. </p>
 <p>The Mind Map below shows the entire project area, with all particularities and was drawn during the opening
 session of the project. The objective was to find the more constraints as possible in order to make easiest the future designing session.</p>
 
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16319468/c1ce39f4-3993-11e6-8445-64abb2495414.png" /></p>
+
 # Phase 1 - Connected Device 
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png" /></p>
