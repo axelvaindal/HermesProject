@@ -94,8 +94,6 @@ We used it in order to design electronics hardware of Hermes Project.
 
 ## Step 2 - Exploitation Software and Web Based Interface
 
-# Documentation
-
 # Additional notes and improvement ideas
 
 In addition to the previous work, a business analysis has also been made for this project.
