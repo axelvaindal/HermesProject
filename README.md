@@ -17,8 +17,6 @@ This project is able to handle various form of data, including:</p>
 This repository is for educational purpose only and you can use it as an example for any
 engineering project. <br /> Each process and step are documented below.</p>
 
-<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png" /></p>
-
 # Chronology
 
 <p>The chronology included below demonstrates the work done in a very short amount of time.
@@ -35,6 +33,8 @@ session of the project. The objective was to find the more constraints as possib
 
 
 # Phase 1 - Connected Device 
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png" /></p>
 
 ## Conception
 
