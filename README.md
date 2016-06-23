@@ -98,4 +98,7 @@ We used it in order to design electronics hardware of Hermes Project.
 
 # Additional notes and improvement ideas
 
+In addition to the previous work, a business analysis has also been made for this project.
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/9677426/16322531/fca4a832-39a3-11e6-9241-30044945a71f.png"/></p>
 
