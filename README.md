@@ -95,7 +95,15 @@ The following class diagram shows buffer and alert manager classes used inside t
 
 ## Step 1 - Concatenation Software
 
+In order to get a full JSON File, a concatenation software has been developed.
+This software is able to browse inside a whole directory to concatenate all files inside in one big file which you can save wherever you please.
+Sources can be found inside this repository.
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233779/c76849d8-37cf-11e6-98d1-e3766d274eb1.png"/></p>
+
 ## Step 2 - Exploitation Software and Web Based Interface
+
+
 
 # Additional notes and improvement ideas
 
