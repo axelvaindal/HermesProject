@@ -34,14 +34,25 @@
 
 #define GRAVITY_CONSTANT 9.80665
 
+
+typedef struct SRawData
+{
+	int16_t ax;
+	int16_t ay;
+	int16_t az;
+	int16_t gx;
+	int16_t gy;
+	int16_t gz;
+} SRawData;
+
 /**
 * Structure representing the linear acceleration
 */
 typedef struct SLinearAcceleration
 {
-	int16_t ax;
-	int16_t ay;
-	int16_t az;
+	double ax;
+	double ay;
+	double az;
 } SLinearAcceleration;
 
 /**
@@ -49,9 +60,9 @@ typedef struct SLinearAcceleration
 */
 typedef struct SAngularAcceleration
 {
-	int16_t gx;
-	int16_t gy;
-	int16_t gz;
+	double gx;
+	double gy;
+	double gz;
 } SAngularAcceleration;
 
 /**
@@ -95,7 +106,7 @@ class Accelerometer
 		*/
 		void init();
 		void update();
-		void Accelerometer::read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAngularPosition* aP);
+		void read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAngularPosition* aP);
 		
 		/**
 		 * Linear Acceleration Methods
@@ -135,9 +146,8 @@ class Accelerometer
 		int16_t gx0, gy0, gz0;
 		unsigned long lastExecution;
 		
+		SRawData rawData;
 
-		SLinearAcceleration linearAcceleration;
-		SAngularAcceleration angularAcceleration;
 		SAngularPosition angularPosition;
 };
 

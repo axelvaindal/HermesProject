@@ -21,14 +21,10 @@ class DHTSensor
 {
 	private:
 		int8_t pin;
-		SHumidity humidity;
-		STemperature temperature;
 	public:
         DHTSensor();
         DHTSensor(int _pin);
-		bool read();
-		int8_t getTemperature();
-		int8_t getHumidity();
+		bool read(SHumidity* h, STemperature* t);
 };
 
 #endif

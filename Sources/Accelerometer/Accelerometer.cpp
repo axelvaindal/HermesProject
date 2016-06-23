@@ -81,18 +81,13 @@ void Accelerometer::read(SLinearAcceleration* lA, SAngularAcceleration* aA, SAng
 	update();
 	
 	/* Linear Acceleration */
-	getLinearAccelerationG(lA);
-	getLinearAccelerationGWithoutGravity(lA);
 	getLinearAccelerationMPS(lA);
-	getLinearAccelerationMPSWithoutGravity(lA);
 	 
 	/* Angular Acceleration */
 	getAngularAccelerationDPS(aA);
-	getAngularAccelerationRPS(aA);
 	 
 	/* Angular Position */
 	getAngularPositionD(aP);
-	getAngularPositionR(aP);
 }
 
 /**
@@ -104,7 +99,7 @@ void Accelerometer::update()
 {
 	if (millis() - lastExecution >= deltaTime)
 	{
-		chipset.getMotion6(&(linearAcceleration.ax), &(linearAcceleration.ay), &(linearAcceleration.az), &(angularAcceleration.gx), &(angularAcceleration.gy), &(angularAcceleration.gz));
+		chipset.getMotion6(&(rawData.ax), &(rawData.ay), &(rawData.az), &(rawData.gx), &(rawData.gy), &(rawData.gz));
 	}
 }
 
@@ -116,9 +111,9 @@ void Accelerometer::update()
  */
 void Accelerometer::getLinearAccelerationG(SLinearAcceleration* result)
 {
-	result->ax = (double) (linearAcceleration.ax) / LSB_TO_G_2;
-	result->ay = (double) (linearAcceleration.ay) / LSB_TO_G_2;
-	result->az = (double) (linearAcceleration.az) / LSB_TO_G_2;
+	result->ax = (double) (rawData.ax) / LSB_TO_G_2;
+	result->ay = (double) (rawData.ay) / LSB_TO_G_2;
+	result->az = (double) (rawData.az) / LSB_TO_G_2;
 }
 
 /**
@@ -171,9 +166,9 @@ void Accelerometer::getLinearAccelerationMPSWithoutGravity(SLinearAcceleration* 
  */
 void Accelerometer::getAngularAccelerationDPS(SAngularAcceleration* result)
 {
-	result->gx = (double) (angularAcceleration.gx) / LSB_TO_DPS_250;
-	result->gy = (double) (angularAcceleration.gy) / LSB_TO_DPS_250;
-	result->gz = (double) (angularAcceleration.gz) / LSB_TO_DPS_250;
+	result->gx = (double) (rawData.gx) / LSB_TO_DPS_250;
+	result->gy = (double) (rawData.gy) / LSB_TO_DPS_250;
+	result->gz = (double) (rawData.gz) / LSB_TO_DPS_250;
 }
 
 /**
@@ -203,9 +198,9 @@ void Accelerometer::getAngularPositionD(SAngularPosition* result)
 	SAngularAcceleration a;
 	getAngularAccelerationDPS(&a);
 
-	angularPosition.alpha 	+= (double) (a->gx * deltaTime / 1000);
-	angularPosition.beta 	+= (double) (a->gy * deltaTime / 1000);
-	angularPosition.theta 	+= (double) (a->gz * deltaTime / 1000);
+	angularPosition.alpha 	+= (double) (a.gx * deltaTime / 1000);
+	angularPosition.beta 	+= (double) (a.gy * deltaTime / 1000);
+	angularPosition.theta 	+= (double) (a.gz * deltaTime / 1000);
 
 	result->alpha = angularPosition.alpha;
 	result->beta = angularPosition.beta;
@@ -255,9 +250,9 @@ void Accelerometer::removeGravityEffect(SLinearAcceleration* result)
   	// Calculation of rotation matrix
 	float R[3][3] =
   	{
-    	{ cos(aP->alpha) * cos(aP->beta) , cos(aP->alpha) * sin(aP->beta) * sin(aP->theta) - sin(aP->alpha) * cos(aP->theta) , cos(aP->alpha) * sin(aP->beta) * cos(aP->theta) + sin(aP->alpha) * sin(aP->theta) },
-    	{ sin(aP->alpha) * cos(aP->beta) , sin(aP->alpha) * sin(aP->beta) * sin(aP->theta) + cos(aP->alpha) * cos(aP->theta) , sin(aP->alpha) * sin(aP->beta) * cos(aP->theta) - cos(aP->alpha) * sin(aP->theta) },
-    	{     -1 * sin(aP->beta)       ,                  cos(aP->beta) * sin(aP->theta)                          ,               cos(aP->beta) * cos(aP->theta)                   }
+    	{ cos(aP.alpha) * cos(aP.beta) , cos(aP.alpha) * sin(aP.beta) * sin(aP.theta) - sin(aP.alpha) * cos(aP.theta) , cos(aP.alpha) * sin(aP.beta) * cos(aP.theta) + sin(aP.alpha) * sin(aP.theta) },
+    	{ sin(aP.alpha) * cos(aP.beta) , sin(aP.alpha) * sin(aP.beta) * sin(aP.theta) + cos(aP.alpha) * cos(aP.theta) , sin(aP.alpha) * sin(aP.beta) * cos(aP.theta) - cos(aP.alpha) * sin(aP.theta) },
+    	{     -1 * sin(aP.beta)       ,                  cos(aP.beta) * sin(aP.theta)                          ,               cos(aP.beta) * cos(aP.theta)                   }
   	};
 
 
@@ -268,9 +263,9 @@ void Accelerometer::removeGravityEffect(SLinearAcceleration* result)
 
   
   	// Apply rotation matrix on accelerometer datas
-  	rotatedAccel[0] = lA->ax * R[0][0] + lA->ay * R[0][1] + lA->az * R[0][2] ;
-  	rotatedAccel[1] = lA->ax * R[1][0] + lA->ay * R[1][1] + lA->az * R[1][2] ;
-  	rotatedAccel[2] = lA->ax * R[2][0] + lA->ay * R[2][1] + lA->az * R[2][2] ;
+  	rotatedAccel[0] = lA.ax * R[0][0] + lA.ay * R[0][1] + lA.az * R[0][2] ;
+  	rotatedAccel[1] = lA.ax * R[1][0] + lA.ay * R[1][1] + lA.az * R[1][2] ;
+  	rotatedAccel[2] = lA.ax * R[2][0] + lA.ay * R[2][1] + lA.az * R[2][2] ;
 
 
   	// Determinate motion acceleration according to previous values (remove gravity effect on rotated acceleration vector)

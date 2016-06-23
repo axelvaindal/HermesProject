@@ -6,7 +6,7 @@
 
 RGBLed :: RGBLed()
 {
-    redPin = 10;
+    redPin = 6;
     greenPin = 9;
     bluePin = 8;
 

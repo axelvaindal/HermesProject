@@ -5,7 +5,7 @@
 #include "SoftwareSerial.h"
 #include "Arduino.h"
 
-#define RX 6
+#define RX 7
 #define TX 5
 
 
@@ -17,7 +17,7 @@ typedef struct SCoordinate
 
 typedef struct SDatetime
 {
-    String Datetime;
+    String datetime;
 } SDatetime;
 
 /**
@@ -35,7 +35,7 @@ class GPS
 		/**
 		 * Public Methods
 		 */
-		bool read();
+		bool read(SCoordinate* c, SDatetime* clk);
 
 	private:
 		/**
@@ -43,7 +43,6 @@ class GPS
 		 */
 
 		void init();
-        void push(SCoordinate coordinate, SDatetime datetime);
 		bool check();
 
 		/**
@@ -51,10 +50,6 @@ class GPS
 		 */
 		TinyGPSPlus tinyGps;
 		SoftwareSerial ss;
-        SCoordinate coordinate;
-        SDatetime datetime;
-
-		
 };
 
 #endif // !GPS_H

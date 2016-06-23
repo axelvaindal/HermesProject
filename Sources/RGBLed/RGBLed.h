@@ -12,7 +12,7 @@ class RGBLed
 {
     private:
 
-        int8_t redpin,greenpin,bluepin; // Arduino pin
+        int8_t redPin,greenPin,bluePin; // Arduino pin
 
         int8_t red,green,blue; //variable value
 

@@ -230,7 +230,12 @@ void BufferManager::pushAngularAcceleration(SAngularAcceleration* data)
 */
 void BufferManager::pushHumidity(SHumidity* data)
 {
+	SAlert alert;
 	genericPush(&bufferHumidity, data);
+	if(this->alertManager->checkHumidity(&alert, data))
+	{
+		pushAlert(&alert);
+	}
 }
 
 /*
@@ -252,7 +257,12 @@ void BufferManager::pushTemperature(STemperature* data)
 */
 void BufferManager::pushLight(SLight* data)
 {
+	SAlert alert;
 	genericPush(&bufferLight, data);
+	if(this->alertManager->checkLight(&alert, data))
+	{
+		pushAlert(&alert);
+	}
 }
 
 /*
@@ -281,7 +291,8 @@ void BufferManager::pushAlert(SAlert* data)
 bool BufferManager::popGPS(SCoordinate* result)
 {
 	return genericPop(&bufferGPS, result);
-}
+}
+
 /*
 * BufferManager::popLinearAcceleration
 * Method to pop a SLinearAcceleration data from the Linear acceleration buffer
@@ -492,4 +503,25 @@ uint8_t BufferManager::dataCountLight()
 uint8_t BufferManager::dataCountAlert()
 {
 	return dataCount(&bufferAlert);
+}
+
+/*
+* BufferManager::setAlertManager
+* Setter for alertManager attribute
+* @param {AlertManager*} Pointer to alertManager instance
+* @return {void}
+*/
+void BufferManager::setAlertManager(AlertManager* a)
+{
+	this->alertManager = a;
+}
+
+/*
+* BufferManager::getAlertManager
+* Getter for alertManager attribute
+* @return {AlertManager*}
+*/
+AlertManager* BufferManager::getAlertManager()
+{
+	return this->alertManager;
 }
