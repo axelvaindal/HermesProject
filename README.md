@@ -21,8 +21,6 @@ engineering project. <br /> Each process and step are documented below.</p>
 
 # Chronology
 
-<p>The chronology included below demonstrates the work done in a very short amount of time.
-
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16318978/9802e5cc-3991-11e6-81d7-3761500a6dd6.png" /></p>
 
 # Mind Map
@@ -32,11 +30,13 @@ Often used during brainstorming session, Mind Maps are particulary suited in ord
 concept and ideas during team sessions. </p>
 
 <p>The Mind Map below shows the entire project area, with all particularities and was drawn during the opening
-session of the project. The objective was to find the more constraints as possible in order to make easiest the future designing session.</p>
+session of the project. The objective was to find the more constraints as possible in order to make easiest the future designing.</p>
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16319468/c1ce39f4-3993-11e6-8445-64abb2495414.png" /></p>
 
 # Phase 1 - Connected Device 
+
+During the first phase, we had to work in order to create the connected device used to collect data in order to proceed the further big data analysis.
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16190604/6f799622-36e0-11e6-8e90-47059148459a.png" /></p>
 
