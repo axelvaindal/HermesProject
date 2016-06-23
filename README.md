@@ -42,13 +42,25 @@ During the first phase, we had to work in order to create the connected device u
 
 ## Conception
 
+The conception is in two parts : hardware conception and software conception.
+
+During the hardware conception, we made 2D et 3D designing in order to make a box with a 3D printer. In the meantime, we also worked on Fritzing in order to create a virtual prototype of the electronic system.
+
+Durign the software conception, we made an UML representation of the system and some mockups in order to represent the user interface.
+
 ### General Overview - Hardware
 
-#### Casing 2D Designing
+#### Casing Designing
+
+The first step in casing designing was about measuring the dimension of the device in order to draw the plans.
+Plans were made with Catia and were used as references in order to make the 3D designing.
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233852/fba02162-37cf-11e6-8098-4db12e32b809.jpg" /></p>
 
-#### Casing 3D Designing 
+The second step was the 3D Designing, which was made with 123Design.
+Each part of the casing has been printed with a 3D Printer inside Exia Cesi Toulouse's Fablab.
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16321556/d1ed9f96-399d-11e6-9d2b-f47db18e98ae.png" /></p>
 
 #### Prototyping with Fritzing
 
