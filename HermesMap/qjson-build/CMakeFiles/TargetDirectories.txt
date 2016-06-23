@@ -1,0 +1,6 @@
+C:/Users/Lakio/Desktop/qt-google-maps-master/qjson-build/CMakeFiles/uninstall.dir
+C:/Users/Lakio/Desktop/qt-google-maps-master/qjson-build/CMakeFiles/INSTALL.dir
+C:/Users/Lakio/Desktop/qt-google-maps-master/qjson-build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Lakio/Desktop/qt-google-maps-master/qjson-build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Lakio/Desktop/qt-google-maps-master/qjson-build/src/CMakeFiles/INSTALL.dir
+C:/Users/Lakio/Desktop/qt-google-maps-master/qjson-build/src/CMakeFiles/qjson-qt5.dir
