@@ -72,20 +72,23 @@ We used it in order to design electronics hardware of Hermes Project.
 
 ### General Overview - Software
 
+During software conception, most of the time was UML Designing.
+The Unified Modeling Language (UML) is a general-purpose, developmental, modeling language in the field of software engineering, that is intended to provide a standard way to visualize the design of a system.
+
 #### UML Component Diagram
+
+In order to represent the whole system, we used an UML Component Diagram (thanks to StarUML) and represented interaction between components and artifacts.
+It is possible to see that the application is entirely threaded, so each sensor can work at its rythm without being bothered by the others.
+
+A circular buffer was also developed in order to store data and alert awaiting for writter.
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233778/c7598204-37cf-11e6-8e46-18837fe142e8.png" /></p>
 
-## Production
-
-### Step 1 - Proofs of Concept
-
-### Step 2 - Module development and cleaning
+The following class diagram shows sensors classes and structures used inside the application.
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233777/c7594578-37cf-11e6-876c-b93a359413e6.png"/></p>
 
-### Step 3 - Integration and optimization
-
+The following class diagram shows buffer and alert manager classes used inside the application.
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233779/c76849d8-37cf-11e6-98d1-e3766d274eb1.png"/></p>
 
 # Phase 2 - Big Data and Business Intelligence
