@@ -22,7 +22,8 @@ engineering project. <br /> Each process and step are documented below.</p>
 # Chronology
 
 <p>The chronology included below demonstrates the work done in a very short amount of time.
-<br />Each part of the project has been represented inside.</p>
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16318978/9802e5cc-3991-11e6-81d7-3761500a6dd6.png" /></p>
 
 # Mind Map
 
@@ -32,7 +33,6 @@ concept and ideas during team sessions. </p>
 
 <p>The Mind Map below shows the entire project area, with all particularities and was drawn during the opening
 session of the project. The objective was to find the more constraints as possible in order to make easiest the future designing session.</p>
-
 
 # Phase 1 - Connected Device 
 
