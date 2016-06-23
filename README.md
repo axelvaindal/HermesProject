@@ -64,6 +64,10 @@ Each part of the casing has been printed with a 3D Printer inside Exia Cesi Toul
 
 #### Prototyping with Fritzing
 
+Fritzing is an open source initiative to develop amateur or hobby CAD software for the design of electronics hardware, to support designers and artists ready to move from experimenting with a prototype to building a more permanent circuit. It was developed at the University of Applied Sciences of Potsdam.
+
+We used it in order to design electronics hardware of Hermes Project.
+
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16234120/cedd3722-37d0-11e6-8bb0-04d2fe67dd39.png" /></p>
 
 ### General Overview - Software
@@ -76,8 +80,6 @@ Each part of the casing has been printed with a 3D Printer inside Exia Cesi Toul
 
 ### Step 1 - Proofs of Concept
 
-
-
 ### Step 2 - Module development and cleaning
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233777/c7594578-37cf-11e6-876c-b93a359413e6.png"/></p>
@@ -88,21 +90,9 @@ Each part of the casing has been printed with a 3D Printer inside Exia Cesi Toul
 
 # Phase 2 - Big Data and Business Intelligence
 
-## Conception
+## Step 1 - Concatenation Software
 
-### Step 1 - Extract Transform Load
-
-### Step 2 - Indicators and Data Exploitation 
-
-### Step 3 - Report and analyzis
-
-## Production
-
-### Step 1 - Concatenation Software
-
-### Step 2 - Data Mining Algorithm
-
-### Step 3 - Exploitation Software and Web Based Interface
+## Step 2 - Exploitation Software and Web Based Interface
 
 # Documentation
 
