@@ -99,7 +99,7 @@ In order to get a full JSON File, a concatenation software has been developed.
 This software is able to browse inside a whole directory to concatenate all files inside in one big file which you can save wherever you please.
 Sources can be found inside this repository.
 
-<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16233779/c76849d8-37cf-11e6-98d1-e3766d274eb1.png"/></p>
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16323140/ca06e606-39a8-11e6-9b00-c480129da958.png"/></p>
 
 ## Step 2 - Exploitation Software and Web Based Interface
 
