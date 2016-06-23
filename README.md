@@ -115,3 +115,13 @@ In addition to the previous work, a business analysis has also been made for thi
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/9677426/16322531/fca4a832-39a3-11e6-9241-30044945a71f.png"/></p>
 
+This analysis demonstrates this project to be a typical case for Business Model development.
+By the way, many improvements can be made to this project, for example:
+
+- Casing optimization in weight and size
+- Software optimization for the connected device
+- Full optimization of the product life circle
+- Migration to a Service Oriented Software for the exploitation
+
+Feel free to contribute to this repository by doing pull request.
+
