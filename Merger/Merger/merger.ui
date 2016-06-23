@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>474</width>
-    <height>290</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -124,35 +124,6 @@ border-radius:3px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color:#fff</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="regex">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>140</y>
-      <width>271</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:#fff</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>140</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:#fff</string>
-    </property>
-    <property name="text">
-     <string>Expression à retirer</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">

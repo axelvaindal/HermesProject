@@ -2,6 +2,7 @@
 #define MERGER_HPP
 
 #include <QMainWindow>
+#include <QtNetwork/QNetworkReply>
 
 namespace Ui {
 class Merger;
@@ -19,8 +20,8 @@ private slots:
    void on_selectFolder_clicked();
    void on_selectJson_clicked();
    void on_merge_clicked();
-   void on_addField_clicked();
-   void on_addFilter_clicked();
+   void replyFinished(QNetworkReply *);
+
 
 private:
     void merge();

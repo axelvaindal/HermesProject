@@ -36,8 +36,6 @@ public:
     QPushButton *merge;
     QLineEdit *folder;
     QLineEdit *json;
-    QLineEdit *regex;
-    QLabel *label_3;
     QLabel *label_4;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -47,7 +45,7 @@ public:
     {
         if (Merger->objectName().isEmpty())
             Merger->setObjectName(QStringLiteral("Merger"));
-        Merger->resize(474, 290);
+        Merger->resize(474, 300);
         Merger->setStyleSheet(QStringLiteral("background-color:rgb(9, 0, 83);"));
         centralWidget = new QWidget(Merger);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -82,14 +80,6 @@ public:
         json->setObjectName(QStringLiteral("json"));
         json->setGeometry(QRect(180, 100, 181, 22));
         json->setStyleSheet(QStringLiteral("background-color:#fff"));
-        regex = new QLineEdit(centralWidget);
-        regex->setObjectName(QStringLiteral("regex"));
-        regex->setGeometry(QRect(180, 140, 271, 22));
-        regex->setStyleSheet(QStringLiteral("background-color:#fff"));
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(20, 140, 141, 16));
-        label_3->setStyleSheet(QStringLiteral("color:#fff"));
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(130, 0, 211, 41));
@@ -121,7 +111,6 @@ public:
         selectJson->setText(QApplication::translate("Merger", "Parcourir", 0));
         label_2->setText(QApplication::translate("Merger", "Fichier de destination", 0));
         merge->setText(QApplication::translate("Merger", "Fusionner", 0));
-        label_3->setText(QApplication::translate("Merger", "Expression \303\240 retirer", 0));
         label_4->setText(QApplication::translate("Merger", "Hermes Merger", 0));
     } // retranslateUi
 
