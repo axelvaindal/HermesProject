@@ -13,6 +13,8 @@ This project is able to handle various form of data, including:</p>
 - DateTime
 - Light level
 
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/11026659/16308423/316115ea-3965-11e6-9005-b7155d6840fd.png" /></p>
+
 <p>Hermes Project is maintained by Exia CESI Toulouse A4L.
 This repository is for educational purpose only and you can use it as an example for any
 engineering project. <br /> Each process and step are documented below.</p>
